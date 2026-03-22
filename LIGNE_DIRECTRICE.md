@@ -2,111 +2,104 @@
 
 ## Vision
 
-Faire de `La Petite Folie` un site vitrine clair, credible et chaleureux qui donne envie de venir, puis qui permet en moins de 30 secondes de :
+Faire de `La Petite Folie` un site vitrine direct, vivant et credible, avec un ton urbain et franc.
 
-- comprendre l'identite du lieu
-- voir l'essentiel de la carte
+En moins de 30 secondes, un visiteur doit pouvoir :
+
+- comprendre l'esprit du lieu
+- voir une carte claire
 - verifier les horaires
-- appeler ou trouver l'adresse
+- appeler ou reserver
+- retrouver l'adresse et le Facebook officiel
 
-Le site ne doit pas ressembler a une maquette generique de restaurant. Il doit transmettre une impression de lieu vivant, lisible, simple, soigne et humain.
-
-## Public Cible
-
-Public principal :
-
-- habitants du secteur
-- touristes de passage
-- personnes qui cherchent rapidement ou manger a Saint-Pol-de-Leon
-
-Public secondaire :
-
-- clients qui veulent verifier horaires, telephone, adresse ou page Facebook
-- personnes qui hesitent entre plusieurs restaurants et comparent en quelques secondes
-
-## Promesse Utilisateur
-
-En arrivant sur le site, l'utilisateur doit pouvoir comprendre immediatement :
-
-- quel est le style du lieu
-- ou se trouve le restaurant
-- comment contacter l'etablissement
-- si la carte et les formules correspondent a son attente
-
-## Ligne Editoriale
+## Ligne editoriale
 
 Le ton doit rester :
 
 - simple
-- franc
-- humain
 - concret
-- jamais pompeux
+- lisible
+- humain
+- sans discours abstrait
 
-On privilegie :
+Phrase repere :
 
-- des formulations courtes
-- des informations verifiables
-- une mise en avant du fait maison, du frais, du rythme du lieu et de la lisibilite
+`Cuisine maison, produits frais, un grain de folie au coeur de la ville.`
 
-On evite :
+## Experience attendue
 
-- les promesses floues
-- le jargon marketing
-- les textes trop longs
-- les effets visuels qui nuisent a la clarte
+La navigation doit rester aerienne et structuree :
 
-## Objectifs Long Terme
+- `Accueil`
+- `Le restaurant`
+- `La carte`
+- `Contact`
 
-1. Stabiliser une version fiable du site vitrine.
-2. Rendre toutes les informations de contact incontestables et faciles a maintenir.
-3. Obtenir une base SEO propre sur les requetes locales liees au restaurant.
-4. Rendre le site deployable sans fragilite technique.
-5. Preparer, seulement si utile, des evolutions futures :
-   - carte editable plus facilement
-   - integration d'avis ou temoignages
-   - galerie photo
-   - reservation ou formulaire, si le besoin metier est reel
+La page peut contenir d'autres blocs utiles tant qu'ils servent cette lecture, comme :
 
-## Garde-Fous Produit
+- galerie
+- reservation
+- mentions legales
 
-- Chaque ajout doit servir la conversion ou la clarte.
-- La priorite absolue est l'exactitude des informations pratiques.
-- Le design doit soutenir la confiance, pas voler l'attention.
-- Les choix techniques ne doivent pas compliquer inutilement la mise a jour du site.
-- Si une idee est belle mais n'aide ni l'utilisateur ni le restaurant, elle sort du scope.
+## Principes produit
 
-## Perimetre Actuel
+1. Le geste culinaire et le lieu passent avant les effets.
+2. Les informations pratiques comptent plus qu'une couche visuelle supplementaire.
+3. Les photos reelles du restaurant sont prioritaires sur tout visuel generique.
+4. Chaque section doit aider un visiteur a agir vite.
+5. La clarte de la carte est un enjeu produit, pas un detail de design.
 
-Le projet actuel couvre :
+## Principes techniques
 
-- page d'accueil / hero
-- presentation du lieu
+1. Garder une base statique simple tant qu'un CMS ou un framework n'apporte pas un vrai gain.
+2. Soigner le HTML semantique, les metas et les performances de chargement.
+3. Utiliser les audits comme garde-fou, sans confondre faux negatifs locaux et vrais problemes de production.
+4. Documenter l'etat reel du site a la fin de chaque session importante.
+
+## Perimetre actuel
+
+Le projet couvre maintenant :
+
+- hero
+- presentation du restaurant
 - carte et formules
+- galerie
+- reservation Formspree
 - informations pratiques
-- contact et acces
+- carte Google Maps
+- mentions legales
+- 404 dediee
+- base SEO / social / schema
 
-Le projet actuel ne couvre pas encore proprement :
+Le projet ne couvre pas encore :
 
-- mise a jour de contenu sans edition du HTML
-- systeme de reservation
-- blog, actualites ou evenements
-- analytics, mesure de conversion, ou back-office
+- back-office ou edition de contenu
+- CMS
+- analytics
+- politique de confidentialite complete
+- systeme de reservation avec disponibilites en temps reel
 
-## Definition d'une Bonne Decision
+## Definition d'une bonne decision
 
 Une decision est bonne si elle :
 
-- rend le site plus fiable
-- reduit l'ambiguite pour le visiteur
-- respecte l'identite du restaurant
-- reste simple a maintenir
-- n'ouvre pas de dette technique disproportionnee
+- augmente la clarte
+- renforce la credibilite
+- garde le site facile a maintenir
+- respecte le ton du lieu
+- evite une dette technique disproportionnee
 
-## Mini-Audit de Sortie
+## Mini-audit de sortie
 
 ### Session du 22/03/2026
 
-- La direction produit a ete clarifiee : site vitrine local, rapide, credibilisant, centre sur l'information utile.
-- Une tension a ete identifiee entre l'ambition visuelle et la fiabilite des informations pratiques.
-- Priorite produit retenue pour la suite : fiabiliser les coordonnees et le deploiement avant toute nouvelle couche cosmetique.
+- Le site a atteint une base stable et exploitable.
+- L'audit final de reference affiche `95/100` et note `A`.
+- Les vraies faiblesses restantes sont surtout metier et non structurelles :
+  - email officiel a confirmer
+  - coordonnees a verrouiller definitivement
+  - confidentialite a formaliser si le formulaire reste en production
+
+Rappel important :
+
+- Les warnings lies au serveur HTTP local, au domaine `127.0.0.1` et au sous-chemin GitHub Pages ne doivent pas etre interpretes comme des regressions produit immediates.

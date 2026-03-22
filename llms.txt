@@ -1,0 +1,20 @@
+# La Petite Folie
+
+> Site vitrine statique du restaurant La Petite Folie.
+
+- URL principale: https://b0uch3r.github.io/quai-ouest/
+- Objet: presentation du lieu, de la carte, des horaires et du formulaire de reservation
+- Contact public: 02 38 53 39 87
+- Adresse affichee: 66 Av. de la Mer, 29250 Saint-Pol-de-Leon
+- Reseau social officiel: https://www.facebook.com/profile.php?id=61588359843339
+
+## Pages
+
+- / : accueil, presentation, carte, galerie, reservation, contact
+- /mentions-legales.html : informations legales et credits photos
+
+## Donnees importantes
+
+- Les contenus et photos proviennent de dossiers locaux du projet.
+- Le formulaire de reservation envoie une demande via Formspree.
+- Le site est pense pour un hebergement statique GitHub Pages.

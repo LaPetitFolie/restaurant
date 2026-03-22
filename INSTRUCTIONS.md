@@ -2,144 +2,149 @@
 
 ## Role de travail
 
-Ce projet est pilote comme un trio de travail :
+Ce projet est pilote comme un groupe de travail compact :
 
-- Architecte Systemes : structure du projet, lisibilite, documentation, hygiene des fichiers
-- Developpeur Senior / Auditeur : qualite du HTML/CSS/JS, accessibilite, performance, robustesse
-- Stratege Produit : coherence du message, priorisation, utilite metier, prevention du hors-sujet
+- CTO / orchestrateur : priorisation, coherence technique et produit
+- Developpeur senior : HTML, CSS, JS, accessibilite, robustesse
+- Integrateur contenu : photos, carte, horaires, informations utiles
+- Auditeur SEO / qualite : audit, verification et documentation de sortie
 
-## Etat du projet au 22/03/2026
+## Etat reel du projet au 22/03/2026
 
-Le site est aujourd'hui un site vitrine statique :
+Le site est une base statique propre, sans framework, composee de :
 
 - `index.html`
+- `mentions-legales.html`
+- `404.html`
 - `assets/css/styles.css`
 - `assets/js/main.js`
-- ressources statiques et PWA minimales (`manifest.json`, favicons, `robots.txt`)
+- `assets/images/*`
+- `robots.txt`
+- `sitemap.xml`
+- `manifest.json`
+- `llms.txt`
+- `seomator.toml`
 
-Points positifs constates :
+## Ce qui est en place
 
-- base simple, rapide a comprendre et facile a deployer
-- direction visuelle deja marquee et exploitable
-- sections coeur deja presentes : hero, restaurant, carte, contact
-- images locales, peu de dependances, JS leger
-- premiers elements SEO deja ajoutes
+### Front
 
-## Audit Technique Initial
+- hero avec vraie photo locale
+- navigation desktop + menu mobile
+- sections : `Accueil`, `Le restaurant`, `La carte`, `Galerie`, `Reservation`, `Contact`
+- page `mentions-legales.html`
+- page `404.html`
 
-### Priorite 1
+### Contenu / photos
 
-1. Compatibilite de deploiement GitHub Pages fragile.
-   Le projet cible un depot GitHub nomme `restaurant`. Si le site est publie en GitHub Pages de type "project site", les URL absolues en racine casseront les assets et metadonnees.
-   Concerne notamment :
-   - `index.html` : canonical en `/`
-   - `index.html` : `og:image`, `twitter:image`, favicon, manifest en `/...`
-   - `manifest.json` : `start_url` et icones en `/...`
-   Regle : ne plus utiliser de chemins racine absolus tant que le mode de deploiement final n'est pas confirme.
+- integration des photos locales du restaurant
+- carte structuree en blocs lisibles
+- horaires et informations pratiques visibles
+- lien Facebook officiel integre
 
-2. Donnees metier a verifier avant toute mise en production.
-   Le numero `02 38 53 39 87` est repete dans la page et le schema `Restaurant`, alors que l'adresse affichee est `29250 Saint-Pol-de-Leon`.
-   Ce n'est pas un bug de code pur, mais un risque produit/SEO fort : si la fiche contact est fausse, le site devient moins credible et peut generer des appels errones.
-   Regle : aucune donnee business sensible ne doit etre dupliquee sans source verifiee.
+### JS
 
-### Priorite 2
+- animation `reveal` corrigee sur navigation par ancres
+- `IntersectionObserver` regle sur `threshold: 0.05`
+- gestion menu mobile
+- reservation avec envoi Formspree et retour visuel utilisateur
 
-1. Accessibilite et comportement du menu mobile incomplets.
-   Le menu mobile repose sur des `onclick` inline et n'implemente pas les usages clavier attendus comme `Escape`, gestion du focus, ou fermeture plus robuste.
+### SEO / technique
 
-2. Contenu temporel fragile.
-   La mention `A partir d'avril` deviendra vite ambigue ou obsolete. Toute phrase dependante du calendrier doit etre datee ou reliee a une source editable.
+- `canonical`
+- Open Graph + Twitter Card
+- JSON-LD sur la home et sur la page mentions legales
+- `robots.txt`
+- `sitemap.xml`
+- favicons + manifest
+- `llms.txt`
 
-3. SEO incomplet.
-   Le canonical est placeholder, le type Open Graph est discutable, et aucune strategie de sitemap/URL finale n'est encore fixee.
+## Regles a respecter sur les prochaines sessions
 
-### Priorite 3
+### Donnees metier
 
-1. CSS avec dette de structure.
-   Des blocs CSS existent pour `#galerie` et `#horaires` alors que ces sections ne sont pas presentes comme telles dans le HTML actuel.
-
-2. Styles inline dans le HTML.
-   Plusieurs `style="margin-top: ..."` sont presents. Ils doivent etre remplaces par des classes de presentation.
-
-3. Documentation encore tres legere.
-   Le depot ne documente pas encore la verite produit, les sources des contenus, ni la methode de mise a jour.
-
-## Regles Techniques a Respecter
-
-### Structure
-
-- Garder une architecture simple de site statique tant qu'un besoin clair ne justifie pas un framework.
-- Eviter toute duplication de contenu metier si une seule source peut suffire.
-- Centraliser a terme les donnees variables du restaurant :
-  - telephone
+- Ne pas inventer d'informations business.
+- Toute modification de :
   - adresse
+  - telephone
+  - email
   - horaires
-  - liens sociaux
-  - textes SEO courts
+  - lien Facebook
+  doit etre verifiee avant publication.
 
 ### HTML
 
-- Conserver un HTML semantique et lisible.
-- Eviter les handlers inline comme `onclick`.
-- Toute nouvelle section doit repondre a un objectif utilisateur clair.
-- Ne jamais ajouter une section purement decorative sans utilite metier ou SEO.
+- Garder le HTML semantique, lisible et sobre.
+- Eviter d'ajouter des sections purement decoratives.
+- Avant de toucher `index.html`, lire le fichier entier.
 
 ### CSS
 
-- Utiliser les variables de `:root` comme systeme de design.
-- Preferer des classes reutilisables plutot que des styles inline.
-- Supprimer les regles mortes quand une direction est abandonnee.
-- Verifier mobile avant de considerer un travail termine.
+- Conserver la palette deja posee autour du bleu baie, du rose signature et du sable.
+- Garder un bon contraste dans les sections sombres, surtout `#carte`.
+- Toute nouvelle zone image doit avoir un fallback de fond.
 
 ### JavaScript
 
-- Garder le JS minimal, progressif et sans dependance inutile.
-- Priorite aux comportements utiles : navigation, accessibilite, interactions simples.
-- Toute interaction doit rester acceptable sans animation.
+- Garder un JS leger et progressif.
+- Toute animation doit rester acceptable si l'observer ou le scroll echoue.
+- Ne pas reintroduire de `alert()` dans le formulaire.
 
-### SEO / Decouverte
+### SEO / audit
 
-- Toujours definir les URL selon le mode de deploiement reel.
-- Tant que le site peut vivre sous un sous-chemin, utiliser des chemins relatifs ou une strategie de base claire.
-- Ne jamais publier de canonical, image sociale, ou manifeste non coherents avec l'URL finale.
-- Les donnees structurees doivent rester strictement alignees sur les informations reelles du restaurant.
+- Auditer la version locale avant cloture de session si des changements structurels sont faits.
+- Ne pas conclure a un vrai probleme de prod quand l'outil remonte un faux negatif local lie a :
+  - `127.0.0.1`
+  - HTTP au lieu de HTTPS
+  - comportement du serveur de test
 
-### Accessibilite
+## Risques connus
 
-- Respecter clavier, focus visible, ordre logique, textes alternatifs, contrastes.
-- Les composants ouvrables/fermables doivent etre utilisables sans souris.
+### Risques metier
 
-## Methode de Resolution des Problemes
+1. L'email officiel n'est pas encore renseigne dans `mentions-legales.html`.
+2. Les coordonnees affichees doivent encore etre revalidees avec la source metier definitive.
 
-Quand une solution ne fonctionne pas :
+### Risques techniques
 
-1. Admettre l'echec explicitement et nommer le symptome reel.
-2. Isoler si le probleme vient de :
-   - la technique
-   - les donnees metier
-   - une mauvaise hypothese de deploiement
-   - une mauvaise priorisation produit
-3. Corriger la trajectoire avec la modification minimale qui retablit la coherence.
-4. Mettre a jour ce fichier si la regle de travail change.
+1. Le site cible GitHub Pages sous `https://b0uch3r.github.io/quai-ouest/`.
+2. L'audit local remonte encore des ecarts attendus sur :
+   - canonical HTTPS audite depuis un serveur HTTP
+   - URLs `localhost`
+   - headers de securite serveur
+   - doublon `/` et `/index.html`
 
-## Protocole de Session
+## Protocole de session
 
-A chaque session :
+1. Relire `README.md`, `INSTRUCTIONS.md` et `LIGNE_DIRECTRICE.md`.
+2. Verifier l'etat du depot avant modification.
+3. Lire `index.html` en entier avant un lot important.
+4. Si des edits touchent SEO, navigation, reservation ou structure, rerun un audit.
+5. En fin de session, mettre a jour les fichiers `.md` si l'etat reel du projet a change.
 
-1. Relire `INSTRUCTIONS.md` et `LIGNE_DIRECTRICE.md`.
-2. Verifier l'etat courant du depot avant toute modification.
-3. Prioriser les corrections qui augmentent la fiabilite metier avant les embellissements.
-4. A la fin de l'echange, produire un mini-audit de sortie et mettre a jour ces fichiers si necessaire.
-
-## Mini-Audit de Sortie
+## Mini-audit de sortie
 
 ### Session du 22/03/2026
 
-- Audit initial formalise.
-- Depot Git initialise localement et connecte a la remote GitHub, mais push bloque par droits GitHub.
-- Risque principal identifie : incompatibilite probable avec un deploiement GitHub Pages sous sous-chemin.
-- Risque metier majeur identifie : coherence du numero de telephone a verifier.
-- Dette immediate a traiter lors d'une prochaine session :
-  - corriger la strategie d'URL pour le deploiement
-  - verifier les coordonnees officielles
-  - nettoyer les handlers inline et les styles inline
+- Corrections UI et comportement faites sur la base du site.
+- Section `La carte` rendue lisible sur fond sombre.
+- Formulaire de reservation branche a Formspree avec message de confirmation visuel.
+- Galerie portee a 8 photos locales.
+- `Google Maps` passe en lazy loading.
+- `mentions-legales.html`, `404.html`, `sitemap.xml`, `llms.txt` ajoutes.
+- Audit `seomator` rerun et documentation mise a jour.
+
+Rapport de reference :
+
+- `C:\Users\auror\Documents\La Petit Folie\site-audit-tool\reports\la-petite-folie-seomator-final-github-pages-like-2026-03-22.llm`
+
+Resultat :
+
+- score `95/100`
+- note `A`
+
+Reste a traiter plus tard si besoin :
+
+- verifier les vraies coordonnees definitives
+- renseigner l'email officiel
+- ajouter une page de confidentialite si le formulaire est conserve en production
