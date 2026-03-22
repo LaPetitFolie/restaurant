@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://b0uch3r.github.io/quai-ouest/sitemap.xml
+Sitemap: https://lapetitfolie.github.io/restaurant/sitemap.xml

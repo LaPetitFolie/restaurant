@@ -58,7 +58,7 @@ Audit final relance le `22/03/2026` avec `seomator`.
 
 Les points encore remontes sont surtout lies au contexte local :
 
-- audit en `http://127.0.0.1`, alors que le site cible `https://b0uch3r.github.io/quai-ouest/`
+- audit en `http://127.0.0.1`, alors que le site cible `https://lapetitfolie.github.io/restaurant/`
 - URLs `localhost` detectees car le crawl est fait sur le serveur local
 - securite serveur et headers HTTP non representatifs d'un hebergement final
 - doublon `/` et `/index.html` typique d'un site statique servi localement
@@ -74,3 +74,4 @@ Les points metier encore a verifier avant mise en production :
 - Les vraies photos integrees proviennent du dossier local du projet.
 - Le dossier `assets/images/image ajouter/` demande pendant l'audit initial n'a pas fourni d'images exploitables dans le repo de reference; la base actuelle utilise donc les photos locales deja integrees dans `assets/images/`.
 - Le formulaire de reservation envoie vers `https://formspree.io/f/xovdpwla`.
+- URL publique cible GitHub Pages : `https://lapetitfolie.github.io/restaurant/`

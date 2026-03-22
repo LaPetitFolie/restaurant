@@ -107,7 +107,7 @@ Le site est une base statique propre, sans framework, composee de :
 
 ### Risques techniques
 
-1. Le site cible GitHub Pages sous `https://b0uch3r.github.io/quai-ouest/`.
+1. Le site cible GitHub Pages sous `https://lapetitfolie.github.io/restaurant/`.
 2. L'audit local remonte encore des ecarts attendus sur :
    - canonical HTTPS audite depuis un serveur HTTP
    - URLs `localhost`

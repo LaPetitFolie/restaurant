@@ -2,7 +2,7 @@
 
 > Site vitrine statique du restaurant La Petite Folie.
 
-- URL principale: https://b0uch3r.github.io/quai-ouest/
+- URL principale: https://lapetitfolie.github.io/restaurant/
 - Objet: presentation du lieu, de la carte, des horaires et du formulaire de reservation
 - Contact public: 02 38 53 39 87
 - Adresse affichee: 66 Av. de la Mer, 29250 Saint-Pol-de-Leon

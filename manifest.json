@@ -2,18 +2,18 @@
   "name": "La Petite Folie",
   "short_name": "La Petite Folie",
   "description": "Cuisine maison, produits frais, un grain de folie au coeur de la ville.",
-  "start_url": "/quai-ouest/",
+  "start_url": "/restaurant/",
   "display": "standalone",
   "background_color": "#122548",
   "theme_color": "#122548",
   "icons": [
     {
-      "src": "/quai-ouest/icon-192.png",
+      "src": "/restaurant/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/quai-ouest/icon-512.png",
+      "src": "/restaurant/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
