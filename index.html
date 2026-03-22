@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Petite Folie | Cuisine maison et produits frais</title>
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#122548">
+  <meta name="apple-mobile-web-app-title" content="La Petite Folie">
+  <meta
+    name="description"
+    content="La Petite Folie. Cuisine maison, produits frais, un grain de folie au coeur de la ville. Terrasse lumineuse, salle claire et carte de saison."
+  >
+  <link rel="canonical" href="https://b0uch3r.github.io/quai-ouest/">
+  <meta property="og:title" content="La Petite Folie | Cuisine maison et produits frais">
+  <meta
+    property="og:description"
+    content="Cuisine maison, produits frais, un grain de folie au coeur de la ville. Terrasse lumineuse, salle claire et carte de saison."
+  >
+  <meta property="og:site_name" content="La Petite Folie">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:url" content="https://b0uch3r.github.io/quai-ouest/">
+  <meta property="og:image" content="https://b0uch3r.github.io/quai-ouest/assets/images/terrasse-jour.jpg">
+  <meta property="og:image:alt" content="Terrasse de La Petite Folie baignee de lumiere">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La Petite Folie | Cuisine maison et produits frais">
+  <meta
+    name="twitter:description"
+    content="Cuisine maison, produits frais, un grain de folie au coeur de la ville. Terrasse lumineuse, salle claire et carte de saison."
+  >
+  <meta name="twitter:image" content="https://b0uch3r.github.io/quai-ouest/assets/images/terrasse-jour.jpg">
+  <meta name="twitter:image:alt" content="Terrasse de La Petite Folie baignee de lumiere">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preload" as="image" href="assets/images/terrasse-jour.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  </noscript>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script defer src="assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "La Petite Folie",
+      "telephone": "+33 2 38 53 39 87",
+      "priceRange": "EUR 18 - EUR 28",
+      "servesCuisine": [
+        "Cuisine maison",
+        "Cuisine de saison"
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61588359843339"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "66 Av. de la Mer",
+        "postalCode": "29250",
+        "addressLocality": "Saint-Pol-de-Leon",
+        "addressCountry": "FR"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "12:00",
+          "closes": "14:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "12:00",
+          "closes": "14:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "19:00",
+          "closes": "21:00"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Aller au contenu</a>
+  <header id="header" role="banner">
+    <a href="#hero" class="logo" aria-label="Retour a l'accueil - La Petite Folie">
+      <img src="assets/images/logo-la-petite-folie.jpg" alt="Logo La Petite Folie" width="960" height="960" loading="lazy" decoding="async">
+      <span class="logo-text">
+        <strong>La Petite Folie</strong>
+        <em>Restaurant</em>
+      </span>
+    </a>
+
+    <nav aria-label="Navigation principale">
+      <a href="#hero">Accueil</a>
+      <a href="#restaurant">Le restaurant</a>
+      <a href="#carte">La carte</a>
+      <a href="#contact">Contact</a>
+      <a href="#reservation" class="btn-reserve-nav">Reserver</a>
+    </nav>
+
+    <button class="hamburger" type="button" onclick="toggleMobileNav()" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav" id="hamburgerBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <a href="#hero" onclick="toggleMobileNav()">Accueil</a>
+    <a href="#restaurant" onclick="toggleMobileNav()">Le restaurant</a>
+    <a href="#carte" onclick="toggleMobileNav()">La carte</a>
+    <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+    <a href="#reservation" class="btn-primary mobile-cta" onclick="toggleMobileNav()">Reserver</a>
+  </div>
+
+  <main id="main-content">
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="heroBg">
+      <img
+        src="assets/images/terrasse-jour.jpg"
+        alt="Terrasse de La Petite Folie baignee de lumiere"
+        width="720"
+        height="960"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-kicker reveal">La Petite Folie &middot; Terrasse lumineuse &middot; Carte de saison</p>
+      <h1 class="reveal reveal-delay-1">Cuisine maison, produits frais, un grain de folie au coeur de la ville.</h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Terrasse lumineuse, salle claire, equipe en mouvement et carte de saison.
+        Le geste culinaire, le produit et la lisibilite du lieu passent avant le discours.
+      </p>
+      <div class="hero-buttons reveal reveal-delay-3">
+        <a href="tel:0238533987" class="btn-primary">Appeler le restaurant</a>
+        <a href="#carte" class="btn-secondary">Voir la carte</a>
+      </div>
+      <div class="hero-highlights reveal reveal-delay-3">
+        <span>Cuisine maison</span>
+        <span>Produits frais</span>
+        <span>Terrasse lumineuse</span>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+
+  <section id="restaurant">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">Le restaurant</h2>
+        <p class="section-subtitle">Une terrasse vive, une salle simple et un lieu qui raconte le geste sans detour.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="resto-grid reveal" style="margin-top: 3rem;">
+        <div class="resto-img">
+          <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+        </div>
+        <div class="resto-text">
+          <h3>Le lieu</h3>
+          <p>
+            Une terrasse vive et une salle simple qui racontent le geste.
+            Le cadre est lumineux, tres ouvert, melant bois et touches de bleu.
+            L'identite du site suit cette direction: urbaine, franche et tres lisible.
+          </p>
+        </div>
+      </div>
+
+      <div class="resto-grid reverse reveal" style="margin-top: 3rem;">
+        <div class="resto-img">
+          <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+        </div>
+        <div class="resto-text">
+          <h3>La philosophie</h3>
+          <p>
+            La salle principale, la cuisine et le bar offrent une lecture concrete du lieu.
+            Ici, on met en avant l'humain, le produit, le rythme du service et la clarte de la maison
+            plutot qu'un discours abstrait.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section" aria-labelledby="experience-title">
+    <div class="section-inner">
+      <div class="experience-layout">
+        <div class="experience-copy reveal">
+          <p class="section-tag">L'ambiance</p>
+          <h2 class="editorial-title" id="experience-title">Une maison claire, vivante et directe.</h2>
+          <p>
+            Les photos racontent un lieu ouvert, sans surcharge, avec une vraie respiration entre la salle,
+            la terrasse et le mouvement du service. La base du site reprend cette lecture: de l'air, du rythme,
+            des images franches et une navigation simple.
+          </p>
+          <div class="experience-points">
+            <span>Terrasse lumineuse</span>
+            <span>Salle claire</span>
+            <span>Equipe en mouvement</span>
+          </div>
+          <div class="experience-note">
+            <strong>Ce que l'on garde du premier projet</strong>
+            <p>Une structure tres lisible, des sections nettes et un site qui parle d'abord du lieu, de la carte et du service.</p>
+          </div>
+        </div>
+
+        <div class="experience-collage reveal reveal-delay-1">
+          <figure class="experience-photo tall">
+            <img src="assets/images/salle-principale.jpg" alt="Salle principale de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+            <figcaption>Salle principale</figcaption>
+          </figure>
+          <figure class="experience-photo">
+            <img src="assets/images/vue-baie-soir.jpg" alt="Vue exterieure en fin de journee" width="2048" height="1536" loading="lazy" decoding="async">
+            <figcaption>Vue du soir</figcaption>
+          </figure>
+          <figure class="experience-photo">
+            <img src="assets/images/salle-service.jpg" alt="Salle en service a La Petite Folie" width="1698" height="2048" loading="lazy" decoding="async">
+            <figcaption>Service</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="carte">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">La carte</h2>
+        <p class="section-subtitle">Des formules lisibles, un menu structure pour un choix rapide et net.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="menu-highlight reveal" style="margin-top: 2rem;">
+        <h4>Les formules</h4>
+        <div class="formula-grid">
+          <article class="formula-card">
+            <span class="formula-label">Midi uniquement</span>
+            <strong>Entree + plat + dessert</strong>
+            <p>21 EUR</p>
+          </article>
+          <article class="formula-card">
+            <span class="formula-label">Midi uniquement</span>
+            <strong>Entree + plat OU plat + dessert</strong>
+            <p>18 EUR</p>
+          </article>
+        </div>
+        <p class="highlight-note">Hors weekend et jours feries &middot; Cuisine maison &middot; Produits frais &middot; Producteurs locaux</p>
+      </div>
+
+      <div class="menu-layout">
+        <div class="menu-column reveal">
+          <div class="menu-category">
+            <h3>Entrees</h3>
+            <ul class="menu-list">
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Veloute de potimarron</div>
+                <div class="menu-item-desc">Lait de coco, citronnelle, seiche, chips de jambon cru</div>
+              </div>
+              <div class="menu-item-price">12 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Thon marine au yuzu</div>
+                <div class="menu-item-desc">Butternut roti, asperges, gingembre, sesame, miel</div>
+              </div>
+              <div class="menu-item-price">14 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Petoncles roties</div>
+                <div class="menu-item-desc">Espuma de pomme de terre, canard fume</div>
+              </div>
+              <div class="menu-item-price">17 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Carpaccio de St Jacques</div>
+                <div class="menu-item-desc">Marinade passion, gingembre, citron vert, poivre de Timur</div>
+              </div>
+              <div class="menu-item-price">18 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Escalope de foie gras</div>
+                <div class="menu-item-desc">Pommes caramelisees, noix, chutney oignons roses</div>
+              </div>
+              <div class="menu-item-price">19 EUR</div>
+            </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="menu-column reveal reveal-delay-1">
+          <div class="menu-category">
+            <h3>Plats</h3>
+            <ul class="menu-list">
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Tartelette vegetarienne au parmesan</div>
+                <div class="menu-item-desc">Legumes de saison, emulsion basilic</div>
+              </div>
+              <div class="menu-item-price">15 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Burger effiloche de porc</div>
+                <div class="menu-item-desc">Noisettes, champignons, comte, frites maison</div>
+              </div>
+              <div class="menu-item-price">18 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Poulpe au paprika fume</div>
+                <div class="menu-item-desc">Chorizo Bellota, riz noir, emulsion de poivrons</div>
+              </div>
+              <div class="menu-item-price">22 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Volaille basse temperature</div>
+                <div class="menu-item-desc">Houmous de chataignes, arancini, topinambours</div>
+              </div>
+              <div class="menu-item-price">24 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Saumon d'Ecosse Label Rouge</div>
+                <div class="menu-item-desc">Mousseline de panais, jus de langoustines</div>
+              </div>
+              <div class="menu-item-price">24 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">St Jacques snackees</div>
+                <div class="menu-item-desc">Cremeux patate douce et passion, risotto Carnaroli</div>
+              </div>
+              <div class="menu-item-price">27 EUR</div>
+            </li>
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Quasi de veau</div>
+                <div class="menu-item-desc">Asperges, risotto de celeri, carottes roties, jus a la sauge</div>
+              </div>
+              <div class="menu-item-price">28 EUR</div>
+            </li>
+            </ul>
+          </div>
+
+          <div class="menu-category menu-category-small">
+            <h3>Supplements</h3>
+            <ul class="menu-list">
+            <li class="menu-item">
+              <div>
+                <div class="menu-item-name">Supplement</div>
+                <div class="menu-item-desc">Frites maison ou legumes</div>
+              </div>
+              <div class="menu-item-price">5 EUR</div>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-side-card reveal reveal-delay-2">
+        <div class="menu-side-block">
+          <h4>Menu gamins des sables</h4>
+          <p>12 EUR &middot; moins de 12 ans</p>
+          <span>Boisson au choix + filet de poulet pane ou poisson avec frites + glace Smarties ou brownie maison.</span>
+        </div>
+        <div class="menu-side-block">
+          <h4>Menu du jour</h4>
+          <p>Consultez l'ardoise</p>
+          <span>Disponible uniquement le midi, hors weekend et jours feries.</span>
+        </div>
+        <div class="menu-side-image">
+          <img src="assets/images/menu-carte.jpg" alt="Visuel de la carte de La Petite Folie" width="1582" height="2048" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <p class="carte-note reveal">Le menu est maintenant organise en blocs clairs pour faciliter la lecture et preparer une future integration technique propre.</p>
+    </div>
+  </section>
+
+  <section class="kitchen-section" aria-labelledby="kitchen-title">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-tag">Le geste</p>
+        <h2 class="section-title kitchen-title" id="kitchen-title">La cuisine en mouvement</h2>
+        <p class="section-subtitle kitchen-subtitle">Des plans de travail, de la matiere, de la preparation: ici, l'image vient soutenir le discours culinaire.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="kitchen-grid">
+        <article class="kitchen-card reveal">
+          <div class="kitchen-visual">
+            <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          </div>
+          <div class="kitchen-copy">
+            <h3>Mise en place</h3>
+            <p>Le produit, la precision et le rythme passent au premier plan. On voit la cuisine, on comprend le geste.</p>
+          </div>
+        </article>
+
+        <article class="kitchen-card reveal reveal-delay-1">
+          <div class="kitchen-visual">
+            <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+          </div>
+          <div class="kitchen-copy">
+            <h3>Travail du detail</h3>
+            <p>Les assiettes et les preparations montrent une maison qui soigne la nettete du produit sans tomber dans le discours inutile.</p>
+          </div>
+        </article>
+
+        <article class="kitchen-card reveal reveal-delay-2">
+          <div class="kitchen-visual">
+            <img src="assets/images/trancheuse-cuisine.jpg" alt="Outil et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          </div>
+          <div class="kitchen-copy">
+            <h3>Outils et matiere</h3>
+            <p>Le site gagne en caractere quand il montre aussi les outils, la preparation et le vrai relief du service.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="galerie">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">Galerie</h2>
+        <p class="section-subtitle">Une lecture plus complete du lieu avec les vraies photos du restaurant deja presentes dans le projet.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="galerie-grid" style="margin-top: 2rem;">
+        <figure class="galerie-item reveal">
+          <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+          <figcaption>Terrasse</figcaption>
+        </figure>
+        <figure class="galerie-item reveal reveal-delay-1">
+          <img src="assets/images/vue-baie-soir.jpg" alt="Vue du soir sur l'exterieur" width="2048" height="1536" loading="lazy" decoding="async">
+          <figcaption>Vue du soir</figcaption>
+        </figure>
+        <figure class="galerie-item reveal reveal-delay-2">
+          <img src="assets/images/salle-principale.jpg" alt="Salle principale du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          <figcaption>Salle principale</figcaption>
+        </figure>
+        <figure class="galerie-item reveal">
+          <img src="assets/images/salle-service.jpg" alt="Service en salle" width="1698" height="2048" loading="lazy" decoding="async">
+          <figcaption>Service</figcaption>
+        </figure>
+        <figure class="galerie-item reveal reveal-delay-1">
+          <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          <figcaption>Equipe</figcaption>
+        </figure>
+        <figure class="galerie-item reveal reveal-delay-2">
+          <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          <figcaption>Preparation</figcaption>
+        </figure>
+        <figure class="galerie-item reveal">
+          <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+          <figcaption>Detail</figcaption>
+        </figure>
+        <figure class="galerie-item reveal reveal-delay-1">
+          <img src="assets/images/trancheuse-cuisine.jpg" alt="Outils et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          <figcaption>Geste</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservation">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">Reservation</h2>
+        <p class="section-subtitle">Envoie ta demande directement au restaurant. Nous revenons vers toi selon les disponibilites du service.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="reservation-layout" style="margin-top: 2rem;">
+        <div class="reservation-copy reveal">
+          <p class="section-tag">Reserver une table</p>
+          <h3>Une demande simple, claire et rapide.</h3>
+          <p>
+            Indique ton nom, ton telephone, le jour souhaite et le nombre de couverts.
+            Le formulaire envoie maintenant une vraie demande via Formspree au lieu d'un simple message local.
+          </p>
+          <div class="reservation-points">
+            <span>Midi du mardi au samedi</span>
+            <span>Soir le vendredi et le samedi</span>
+            <span>Confirmation selon disponibilites</span>
+          </div>
+          <a href="tel:0238533987" class="btn-primary reservation-call">Appeler directement</a>
+        </div>
+
+        <div class="reservation-card reveal reveal-delay-1">
+          <form id="reservationForm" class="reservation-form" action="https://formspree.io/f/xovdpwla" method="POST">
+            <input type="hidden" name="_subject" value="Nouvelle demande de reservation - La Petite Folie">
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="reservationName">Nom</label>
+                <input id="reservationName" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="form-field">
+                <label for="reservationPhone">Telephone</label>
+                <input id="reservationPhone" name="phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="form-field">
+                <label for="reservationEmail">Email</label>
+                <input id="reservationEmail" name="email" type="email" autocomplete="email">
+              </div>
+              <div class="form-field">
+                <label for="reservationGuests">Nombre de couverts</label>
+                <select id="reservationGuests" name="guests" required>
+                  <option value="">Choisir</option>
+                  <option value="1">1 couvert</option>
+                  <option value="2">2 couverts</option>
+                  <option value="3">3 couverts</option>
+                  <option value="4">4 couverts</option>
+                  <option value="5">5 couverts</option>
+                  <option value="6">6 couverts</option>
+                  <option value="7+">7 couverts ou plus</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="reservationDate">Date souhaitee</label>
+                <input id="reservationDate" name="date" type="date" required>
+              </div>
+              <div class="form-field">
+                <label for="reservationTime">Heure souhaitee</label>
+                <input id="reservationTime" name="time" type="time" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="reservationMessage">Message</label>
+              <textarea id="reservationMessage" name="message" rows="5" placeholder="Precisions, allergies, poussette, retard probable, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary form-submit">Envoyer la demande</button>
+            <p class="form-status" id="reservationStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">Informations pratiques</h2>
+        <p class="section-subtitle">Adresse, telephone, horaires et acces rapide au Facebook officiel.</p>
+        <div class="wave-divider"></div>
+      </div>
+
+      <div class="horaires-grid reveal" style="margin-top: 2rem;">
+        <div class="horaires-card reveal">
+          <h3>Horaires</h3>
+          <div class="horaire-row">
+            <span class="horaire-jour">Lundi</span>
+            <span class="horaire-ferme">Ferme</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Mardi</span>
+            <span class="horaire-heure">12h - 14h</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Mercredi</span>
+            <span class="horaire-heure">12h - 14h</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Jeudi</span>
+            <span class="horaire-heure">12h - 14h</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Vendredi</span>
+            <span class="horaire-heure">12h - 14h / 19h - 21h</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Samedi</span>
+            <span class="horaire-heure">12h - 14h / 19h - 21h</span>
+          </div>
+          <div class="horaire-row">
+            <span class="horaire-jour">Dimanche</span>
+            <span class="horaire-ferme">Ferme</span>
+          </div>
+          <p class="season-line">A partir d'avril : ouverture midi et soir, du mardi au samedi.</p>
+        </div>
+
+        <div class="horaires-card reveal reveal-delay-1">
+          <h3>Contact</h3>
+          <div class="practical-list">
+            <div class="practical-item">
+              <span class="practical-label">Adresse</span>
+              <strong>66 Av. de la Mer, 29250 Saint-Pol-de-Leon</strong>
+            </div>
+            <div class="practical-item">
+              <span class="practical-label">Telephone</span>
+              <strong><a href="tel:0238533987">02 38 53 39 87</a></strong>
+            </div>
+            <div class="practical-item">
+              <span class="practical-label">Description</span>
+              <strong>Terrasse lumineuse, salle claire, equipe en mouvement et carte de saison.</strong>
+            </div>
+          </div>
+          <div class="contact-actions-inline">
+            <a href="tel:0238533987" class="btn-primary">Appeler le restaurant</a>
+            <a href="https://www.facebook.com/profile.php?id=61588359843339" target="_blank" rel="noopener noreferrer" class="btn-secondary dark-outline">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-grid" style="margin-top: 2rem;">
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Telephone</h4>
+              <p><a href="tel:0238533987">02 38 53 39 87</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Adresse</h4>
+              <p>66 Av. de la Mer<br>29250 Saint-Pol-de-Leon</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-item-text">
+              <h4>Facebook</h4>
+              <p><a href="https://www.facebook.com/profile.php?id=61588359843339" target="_blank" rel="noopener noreferrer">Voir la page officielle</a></p>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="tel:0238533987" class="social-link social-call" aria-label="Appeler le restaurant">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61588359843339" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="#fff"/></svg>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Google Maps">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-panel reveal reveal-delay-1">
+          <h3>Le bon ton du lieu</h3>
+          <p>
+            Cuisine maison, produits frais, un grain de folie au coeur de la ville.
+            L'idee est de garder un ton urbain et franc, avec une lecture rapide des formules,
+            des plats et des informations utiles.
+          </p>
+          <div class="contact-panel-actions">
+            <a href="tel:0238533987" class="btn-primary">Appeler</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer" class="btn-secondary">Itineraire</a>
+          </div>
+          <div class="contact-docs">
+            <figure class="contact-doc-card">
+              <img src="assets/images/menu-formule.jpg" alt="Visuel des formules du midi" width="1409" height="2000" loading="lazy" decoding="async">
+              <figcaption>Formules du midi</figcaption>
+            </figure>
+            <figure class="contact-doc-card">
+              <img src="assets/images/horaires.jpg" alt="Visuel des horaires du restaurant" width="1410" height="2001" loading="lazy" decoding="async">
+              <figcaption>Horaires</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card reveal reveal-delay-2">
+        <div class="map-copy">
+          <p class="section-tag">Plan d'acces</p>
+          <h3>Nous trouver facilement</h3>
+          <p>Le plan est charge en lazy loading pour garder la page fluide tout en donnant un acces direct a l'adresse du restaurant.</p>
+        </div>
+        <div class="map-frame">
+          <iframe
+            title="Plan Google Maps - La Petite Folie"
+            src="https://www.google.com/maps?q=66+Av.+de+la+Mer,+29250+Saint-Pol-de-Leon&z=15&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>La Petite Folie</h4>
+        <p>Cuisine maison, produits frais<br>Un grain de folie au coeur de la ville</p>
+      </div>
+      <div class="footer-col">
+        <h4>Acces rapide</h4>
+        <a href="#hero">Accueil</a>
+        <a href="#restaurant">Le restaurant</a>
+        <a href="#carte">La carte</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#reservation">Reservation</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="tel:0238533987">02 38 53 39 87</a></p>
+        <p><a href="https://www.facebook.com/profile.php?id=61588359843339" target="_blank" rel="noopener noreferrer">Facebook officiel</a></p>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer">66 Av. de la Mer, 29250 Saint-Pol-de-Leon</a></p>
+        <p><a href="mentions-legales.html">Mentions legales</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 La Petite Folie &middot; <a href="mentions-legales.html">Mentions legales</a>
+    </div>
+  </footer>
+</body>
+</html>
