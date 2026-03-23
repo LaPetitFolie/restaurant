@@ -205,10 +205,6 @@ window.addEventListener("load", () => {
   revealFromHash(window.location.hash);
 });
 
-mobileAccordionMedia.addEventListener("change", () => {
-  syncMobileAccordions();
-});
-
 const reservationForm = document.getElementById("reservationForm");
 const reservationStatus = document.getElementById("reservationStatus");
 const menuTabs = Array.from(document.querySelectorAll("[data-menu-tab]"));
@@ -379,6 +375,10 @@ mobileAccordions.forEach((accordion) => {
       }
     });
   });
+});
+
+mobileAccordionMedia.addEventListener("change", () => {
+  syncMobileAccordions();
 });
 
 function activateMenuTab(targetKey) {
