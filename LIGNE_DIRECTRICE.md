@@ -91,13 +91,13 @@ Une decision est bonne si elle :
 
 ## Mini-audit de sortie
 
-### Session du 22/03/2026
+### Session du 23/03/2026
 
-- Le site a atteint une base stable et exploitable.
-- L'audit final de reference affiche `95/100` et note `A`.
-- Les vraies faiblesses restantes sont surtout metier et non structurelles :
+- Le site reste centre sur l'information utile, mais avec une execution visuelle plus premium.
+- La priorite produit a ete respectee : fiabiliser d'abord les informations critiques et la navigation.
+- Les faiblesses restantes sont maintenant surtout metier :
+  - adresse finale a verrouiller par source proprietaire
   - email officiel a confirmer
-  - coordonnees a verrouiller definitivement
   - confidentialite a formaliser si le formulaire reste en production
 
 Rappel important :

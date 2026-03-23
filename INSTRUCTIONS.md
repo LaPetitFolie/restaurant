@@ -9,7 +9,7 @@ Ce projet est pilote comme un groupe de travail compact :
 - Integrateur contenu : photos, carte, horaires, informations utiles
 - Auditeur SEO / qualite : audit, verification et documentation de sortie
 
-## Etat reel du projet au 22/03/2026
+## Etat reel du projet au 23/03/2026
 
 Le site est une base statique propre, sans framework, composee de :
 
@@ -103,7 +103,7 @@ Le site est une base statique propre, sans framework, composee de :
 ### Risques metier
 
 1. L'email officiel n'est pas encore renseigne dans `mentions-legales.html`.
-2. Les coordonnees affichees doivent encore etre revalidees avec la source metier definitive.
+2. L'adresse reste a confirmer par une source metier definitive, meme si le numero a ete revalide via le compte Instagram officiel.
 
 ### Risques techniques
 
@@ -124,15 +124,14 @@ Le site est une base statique propre, sans framework, composee de :
 
 ## Mini-audit de sortie
 
-### Session du 22/03/2026
+### Session du 23/03/2026
 
-- Corrections UI et comportement faites sur la base du site.
-- Section `La carte` rendue lisible sur fond sombre.
-- Formulaire de reservation branche a Formspree avec message de confirmation visuel.
-- Galerie portee a 8 photos locales.
-- `Google Maps` passe en lazy loading.
-- `mentions-legales.html`, `404.html`, `sitemap.xml`, `llms.txt` ajoutes.
-- Audit `seomator` rerun et documentation mise a jour.
+- Verification externe effectuee sur le compte Instagram `@lapetitefolie29`.
+- Numero mis a jour en `02 98 29 11 84` sur le site et dans le schema.
+- Menu mobile corrige sans `onclick`, avec fermeture `Escape`, overlay et boucle de focus.
+- Styles inline residuels remplaces par des classes utilitaires.
+- Message horaire relatif retire au profit d'une formulation durable.
+- Rendu global du site renforce avec une direction visuelle plus aboutie et plus coherente.
 
 Rapport de reference :
 
@@ -145,6 +144,6 @@ Resultat :
 
 Reste a traiter plus tard si besoin :
 
-- verifier les vraies coordonnees definitives
+- verifier l'adresse definitive par source proprietaire ou fiche Google officielle
 - renseigner l'email officiel
 - ajouter une page de confidentialite si le formulaire est conserve en production

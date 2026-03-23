@@ -19,7 +19,7 @@
   >
   <meta property="og:site_name" content="La Petite Folie">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:type" content="restaurant">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://lapetitfolie.github.io/restaurant/">
   <meta property="og:image" content="https://lapetitfolie.github.io/restaurant/assets/images/terrasse-jour.jpg">
   <meta property="og:image:alt" content="Terrasse de La Petite Folie baignee de lumiere">
@@ -50,7 +50,7 @@
       "@context": "https://schema.org",
       "@type": "Restaurant",
       "name": "La Petite Folie",
-      "telephone": "+33 2 38 53 39 87",
+      "telephone": "+33 2 98 29 11 84",
       "priceRange": "EUR 18 - EUR 28",
       "servesCuisine": [
         "Cuisine maison",
@@ -118,20 +118,20 @@
       <a href="#reservation" class="btn-reserve-nav">Reserver</a>
     </nav>
 
-    <button class="hamburger" type="button" onclick="toggleMobileNav()" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav" id="hamburgerBtn">
+    <button class="hamburger" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav" id="hamburgerBtn">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </header>
 
-  <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
+  <div class="mobile-overlay" data-mobile-close="true"></div>
   <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <a href="#hero" onclick="toggleMobileNav()">Accueil</a>
-    <a href="#restaurant" onclick="toggleMobileNav()">Le restaurant</a>
-    <a href="#carte" onclick="toggleMobileNav()">La carte</a>
-    <a href="#contact" onclick="toggleMobileNav()">Contact</a>
-    <a href="#reservation" class="btn-primary mobile-cta" onclick="toggleMobileNav()">Reserver</a>
+    <a href="#hero" data-mobile-close="true">Accueil</a>
+    <a href="#restaurant" data-mobile-close="true">Le restaurant</a>
+    <a href="#carte" data-mobile-close="true">La carte</a>
+    <a href="#contact" data-mobile-close="true">Contact</a>
+    <a href="#reservation" class="btn-primary mobile-cta" data-mobile-close="true">Reserver</a>
   </div>
 
   <main id="main-content">
@@ -155,7 +155,7 @@
         Le geste culinaire, le produit et la lisibilite du lieu passent avant le discours.
       </p>
       <div class="hero-buttons reveal reveal-delay-3">
-        <a href="tel:0238533987" class="btn-primary">Appeler le restaurant</a>
+        <a href="tel:0298291184" class="btn-primary">Appeler le restaurant</a>
         <a href="#carte" class="btn-secondary">Voir la carte</a>
       </div>
       <div class="hero-highlights reveal reveal-delay-3">
@@ -177,7 +177,7 @@
         <div class="wave-divider"></div>
       </div>
 
-      <div class="resto-grid reveal" style="margin-top: 3rem;">
+      <div class="resto-grid reveal section-offset-lg">
         <div class="resto-img">
           <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
         </div>
@@ -188,19 +188,25 @@
             Le cadre est lumineux, tres ouvert, melant bois et touches de bleu.
             L'identite du site suit cette direction: urbaine, franche et tres lisible.
           </p>
+          <div class="value-pitch-card">
+            <span class="value-pitch-badge">Le Menu du Marche a 18 EUR — Entree + Plat + Cafe</span>
+            <p class="value-pitch-claim">Qualite bistronomique, prix de cantine. Pourquoi choisir entre votre budget et votre plaisir ?</p>
+            <p class="value-pitch-proof">Servis en moins de 45 minutes</p>
+          </div>
         </div>
       </div>
 
-      <div class="resto-grid reverse reveal" style="margin-top: 3rem;">
+      <div class="resto-grid reverse reveal section-offset-lg">
         <div class="resto-img">
           <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
         </div>
         <div class="resto-text">
-          <h3>La philosophie</h3>
+          <h3>L'Esprit de la Maison : Votre Escale Solaire</h3>
           <p>
-            La salle principale, la cuisine et le bar offrent une lecture concrete du lieu.
-            Ici, on met en avant l'humain, le produit, le rythme du service et la clarte de la maison
-            plutot qu'un discours abstrait.
+            Bien plus qu'un restaurant, La Petite Folie est une parenthese suspendue. Imaginez le murmure des vagues,
+            la douceur de la brise marine et un accueil si chaleureux qu'on s'y sent instantanement chez soi.
+            Ici, nous cultivons l'art de la convivialite dans un cadre idyllique en bord de mer. Le service n'est pas
+            un protocole, c'est une attention de chaque instant pour que votre seul souci soit de savourer l'horizon.
           </p>
         </div>
       </div>
@@ -212,11 +218,12 @@
       <div class="experience-layout">
         <div class="experience-copy reveal">
           <p class="section-tag">L'ambiance</p>
-          <h2 class="editorial-title" id="experience-title">Une maison claire, vivante et directe.</h2>
+          <h2 class="editorial-title" id="experience-title">Une table ouverte sur l'horizon.</h2>
           <p>
-            Les photos racontent un lieu ouvert, sans surcharge, avec une vraie respiration entre la salle,
-            la terrasse et le mouvement du service. La base du site reprend cette lecture: de l'air, du rythme,
-            des images franches et une navigation simple.
+            A La Petite Folie, nous ne faisons pas que servir des plats ; nous creons des moments.
+            Que vous soyez entre deux rendez-vous pour un dejeuner express ou en terrasse pour laisser le temps filer,
+            notre maison s'adapte a votre rythme. Une cuisine sincere, une vue imprenable et cette atmosphere iodee
+            qui rend chaque bouchee plus savoureuse. Venez comme vous etes, repartez avec le sourire.
           </p>
           <div class="experience-points">
             <span>Terrasse lumineuse</span>
@@ -224,8 +231,8 @@
             <span>Equipe en mouvement</span>
           </div>
           <div class="experience-note">
-            <strong>Ce que l'on garde du premier projet</strong>
-            <p>Une structure tres lisible, des sections nettes et un site qui parle d'abord du lieu, de la carte et du service.</p>
+            <strong>L'esprit du lieu</strong>
+            <p>Une maison qui va droit au but: un lieu lisible, une carte claire et un service que l'on comprend d'un coup d'oeil.</p>
           </div>
         </div>
 
@@ -255,7 +262,7 @@
         <div class="wave-divider"></div>
       </div>
 
-      <div class="menu-highlight reveal" style="margin-top: 2rem;">
+      <div class="menu-highlight reveal section-offset-md">
         <h4>Les formules</h4>
         <div class="formula-grid">
           <article class="formula-card">
@@ -272,138 +279,233 @@
         <p class="highlight-note">Hors weekend et jours feries &middot; Cuisine maison &middot; Produits frais &middot; Producteurs locaux</p>
       </div>
 
-      <div class="menu-layout">
-        <div class="menu-column reveal">
-          <div class="menu-category">
-            <h3>Entrees</h3>
-            <ul class="menu-list">
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Veloute de potimarron</div>
-                <div class="menu-item-desc">Lait de coco, citronnelle, seiche, chips de jambon cru</div>
-              </div>
-              <div class="menu-item-price">12 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Thon marine au yuzu</div>
-                <div class="menu-item-desc">Butternut roti, asperges, gingembre, sesame, miel</div>
-              </div>
-              <div class="menu-item-price">14 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Petoncles roties</div>
-                <div class="menu-item-desc">Espuma de pomme de terre, canard fume</div>
-              </div>
-              <div class="menu-item-price">17 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Carpaccio de St Jacques</div>
-                <div class="menu-item-desc">Marinade passion, gingembre, citron vert, poivre de Timur</div>
-              </div>
-              <div class="menu-item-price">18 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Escalope de foie gras</div>
-                <div class="menu-item-desc">Pommes caramelisees, noix, chutney oignons roses</div>
-              </div>
-              <div class="menu-item-price">19 EUR</div>
-            </li>
-            </ul>
-          </div>
+      <div class="menu-tabs-shell reveal">
+        <div class="menu-express-banner">
+          <span class="menu-express-label">Menu express du midi</span>
+          <p>Entree + plat + cafe a prix doux, pense pour bien dejeuner sans perdre votre elan.</p>
         </div>
 
-        <div class="menu-column reveal reveal-delay-1">
-          <div class="menu-category">
-            <h3>Plats</h3>
-            <ul class="menu-list">
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Tartelette vegetarienne au parmesan</div>
-                <div class="menu-item-desc">Legumes de saison, emulsion basilic</div>
-              </div>
-              <div class="menu-item-price">15 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Burger effiloche de porc</div>
-                <div class="menu-item-desc">Noisettes, champignons, comte, frites maison</div>
-              </div>
-              <div class="menu-item-price">18 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Poulpe au paprika fume</div>
-                <div class="menu-item-desc">Chorizo Bellota, riz noir, emulsion de poivrons</div>
-              </div>
-              <div class="menu-item-price">22 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Volaille basse temperature</div>
-                <div class="menu-item-desc">Houmous de chataignes, arancini, topinambours</div>
-              </div>
-              <div class="menu-item-price">24 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Saumon d'Ecosse Label Rouge</div>
-                <div class="menu-item-desc">Mousseline de panais, jus de langoustines</div>
-              </div>
-              <div class="menu-item-price">24 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">St Jacques snackees</div>
-                <div class="menu-item-desc">Cremeux patate douce et passion, risotto Carnaroli</div>
-              </div>
-              <div class="menu-item-price">27 EUR</div>
-            </li>
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Quasi de veau</div>
-                <div class="menu-item-desc">Asperges, risotto de celeri, carottes roties, jus a la sauge</div>
-              </div>
-              <div class="menu-item-price">28 EUR</div>
-            </li>
-            </ul>
-          </div>
+        <div class="menu-tabs" role="tablist" aria-label="Navigation de la carte">
+          <button
+            type="button"
+            class="menu-tab is-active"
+            id="tab-entrees"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-entrees"
+            data-menu-tab="entrees"
+          >
+            Pour commencer
+          </button>
+          <button
+            type="button"
+            class="menu-tab"
+            id="tab-plats"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-plats"
+            data-menu-tab="plats"
+            tabindex="-1"
+          >
+            La suite
+          </button>
+        </div>
 
-          <div class="menu-category menu-category-small">
-            <h3>Supplements</h3>
-            <ul class="menu-list">
-            <li class="menu-item">
-              <div>
-                <div class="menu-item-name">Supplement</div>
-                <div class="menu-item-desc">Frites maison ou legumes</div>
-              </div>
-              <div class="menu-item-price">5 EUR</div>
-            </li>
-            </ul>
-          </div>
+        <div class="menu-panels">
+          <section
+            class="menu-panel is-active"
+            id="panel-entrees"
+            role="tabpanel"
+            aria-labelledby="tab-entrees"
+            data-menu-panel="entrees"
+          >
+            <p class="menu-panel-subtitle">Des saveurs marines et de saison pour eveiller vos papilles.</p>
+            <div class="menu-category">
+              <h3>Entrees</h3>
+              <ul class="menu-list">
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Veloute de potimarron</div>
+                  <div class="menu-item-desc">Lait de coco, citronnelle, seiche, chips de jambon cru</div>
+                </div>
+                <div class="menu-item-price">12 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Thon marine au yuzu</div>
+                  <div class="menu-item-desc">Butternut roti, asperges, gingembre, sesame, miel</div>
+                </div>
+                <div class="menu-item-price">14 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Petoncles roties</div>
+                  <div class="menu-item-desc">Espuma de pomme de terre, canard fume</div>
+                </div>
+                <div class="menu-item-price">17 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Carpaccio de St Jacques</div>
+                  <div class="menu-item-desc">Marinade passion, gingembre, citron vert, poivre de Timur</div>
+                </div>
+                <div class="menu-item-price">18 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Escalope de foie gras</div>
+                  <div class="menu-item-desc">Pommes caramelisees, noix, chutney oignons roses</div>
+                </div>
+                <div class="menu-item-price">19 EUR</div>
+              </li>
+              </ul>
+            </div>
+          </section>
+
+          <section
+            class="menu-panel"
+            id="panel-plats"
+            role="tabpanel"
+            aria-labelledby="tab-plats"
+            data-menu-panel="plats"
+            hidden
+          >
+            <p class="menu-panel-subtitle">Le coeur de notre savoir-faire, entre terre et mer.</p>
+            <div class="menu-category">
+              <h3>Plats</h3>
+              <ul class="menu-list">
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Tartelette vegetarienne au parmesan</div>
+                  <div class="menu-item-desc">Legumes de saison, emulsion basilic</div>
+                </div>
+                <div class="menu-item-price">15 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Burger effiloche de porc</div>
+                  <div class="menu-item-desc">Noisettes, champignons, comte, frites maison</div>
+                </div>
+                <div class="menu-item-price">18 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Poulpe au paprika fume</div>
+                  <div class="menu-item-desc">Chorizo Bellota, riz noir, emulsion de poivrons</div>
+                </div>
+                <div class="menu-item-price">22 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Volaille basse temperature</div>
+                  <div class="menu-item-desc">Houmous de chataignes, arancini, topinambours</div>
+                </div>
+                <div class="menu-item-price">24 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Saumon d'Ecosse Label Rouge</div>
+                  <div class="menu-item-desc">Mousseline de panais, jus de langoustines</div>
+                </div>
+                <div class="menu-item-price">24 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">St Jacques snackees</div>
+                  <div class="menu-item-desc">Cremeux patate douce et passion, risotto Carnaroli</div>
+                </div>
+                <div class="menu-item-price">27 EUR</div>
+              </li>
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Quasi de veau</div>
+                  <div class="menu-item-desc">Asperges, risotto de celeri, carottes roties, jus a la sauge</div>
+                </div>
+                <div class="menu-item-price">28 EUR</div>
+              </li>
+              </ul>
+            </div>
+
+            <div class="menu-category menu-category-small">
+              <h3>Supplements</h3>
+              <ul class="menu-list">
+              <li class="menu-item">
+                <div>
+                  <div class="menu-item-name">Supplement</div>
+                  <div class="menu-item-desc">Frites maison ou legumes</div>
+                </div>
+                <div class="menu-item-price">5 EUR</div>
+              </li>
+              </ul>
+            </div>
+          </section>
         </div>
       </div>
 
-      <div class="menu-side-card reveal reveal-delay-2">
-        <div class="menu-side-block">
-          <h4>Menu gamins des sables</h4>
-          <p>12 EUR &middot; moins de 12 ans</p>
-          <span>Boisson au choix + filet de poulet pane ou poisson avec frites + glace Smarties ou brownie maison.</span>
+      <div class="signature-section reveal reveal-delay-2">
+        <div class="signature-heading">
+          <h3>Nos Formules Signature</h3>
+          <p>Deux offres pensees pour dejeuner vite, bien, et avec le meme niveau d'exigence que le reste de la maison.</p>
         </div>
-        <div class="menu-side-block">
-          <h4>Menu du jour</h4>
-          <p>Consultez l'ardoise</p>
-          <span>Disponible uniquement le midi, hors weekend et jours feries.</span>
+
+        <div class="signature-quality-list" aria-label="Engagements qualite">
+          <span>Cuisine 100% Maison</span>
+          <span>Produits Frais &amp; Saisonniers</span>
+          <span>Circuit Court &amp; Producteurs Locaux</span>
         </div>
-        <div class="menu-side-image">
-          <img src="assets/images/menu-carte.jpg" alt="Visuel de la carte de La Petite Folie" width="1582" height="2048" loading="lazy" decoding="async">
+
+        <div class="signature-cards">
+          <article class="signature-card signature-card-featured">
+            <div class="signature-card-top">
+              <p class="signature-label">L'Ardoise du Marche</p>
+              <div class="signature-price-group">
+                <strong>18 EUR / 21 EUR</strong>
+                <span>Le midi uniquement</span>
+              </div>
+            </div>
+            <h4>L'Ardoise du Jour</h4>
+            <p class="signature-copy">
+              Chaque matin, notre chef compose avec les arrivages de la criie et du potager.
+              Une cuisine spontanee, fraiche et locale pour votre pause dejeuner.
+            </p>
+            <div class="signature-rates">
+              <div>
+                <span>La Totale</span>
+                <strong>Entree + Plat + Dessert &middot; 21 EUR</strong>
+              </div>
+              <div>
+                <span>L'Essentiel</span>
+                <strong>Entree + Plat ou Plat + Dessert &middot; 18 EUR</strong>
+              </div>
+            </div>
+            <p class="signature-note">Uniquement le midi, du lundi au vendredi.</p>
+            <a href="https://www.instagram.com/lapetitefolie29/" target="_blank" rel="noopener noreferrer" class="signature-link">Voir l'ardoise du jour</a>
+          </article>
+
+          <article class="signature-card">
+            <div class="signature-card-top">
+              <p class="signature-label">Le Menu des Gamins des Sables</p>
+              <div class="signature-price-group">
+                <strong>12 EUR</strong>
+                <span>Moins de 12 ans</span>
+              </div>
+            </div>
+            <h4>Le plaisir des petits, la qualite des grands.</h4>
+            <p class="signature-copy">
+              Parce que les petits gourmets meritent aussi le meilleur du fait-maison.
+              Un menu equilibre et gourmand pour les moins de 12 ans.
+            </p>
+            <ul class="signature-list">
+              <li>Sirop au choix</li>
+              <li>Filet de poulet ou poisson frais</li>
+              <li>Frites maison</li>
+              <li>Brownie ou glace Smarties</li>
+            </ul>
+          </article>
         </div>
       </div>
 
-      <p class="carte-note reveal">Le menu est maintenant organise en blocs clairs pour faciliter la lecture et preparer une future integration technique propre.</p>
+      <p class="carte-note reveal">Des blocs clairs, des prix visibles et une lecture rapide pour choisir sans hesitation.</p>
     </div>
   </section>
 
@@ -458,7 +560,7 @@
         <div class="wave-divider"></div>
       </div>
 
-      <div class="galerie-grid" style="margin-top: 2rem;">
+      <div class="galerie-grid section-offset-md">
         <figure class="galerie-item reveal">
           <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
           <figcaption>Terrasse</figcaption>
@@ -499,24 +601,24 @@
     <div class="section-inner">
       <div class="reveal">
         <h2 class="section-title">Reservation</h2>
-        <p class="section-subtitle">Envoie ta demande directement au restaurant. Nous revenons vers toi selon les disponibilites du service.</p>
+        <p class="section-subtitle">Envoyez votre demande directement au restaurant. Vous recevrez un retour selon les disponibilites du service.</p>
         <div class="wave-divider"></div>
       </div>
 
-      <div class="reservation-layout" style="margin-top: 2rem;">
+      <div class="reservation-layout section-offset-md">
         <div class="reservation-copy reveal">
           <p class="section-tag">Reserver une table</p>
           <h3>Une demande simple, claire et rapide.</h3>
           <p>
-            Indique ton nom, ton telephone, le jour souhaite et le nombre de couverts.
-            Le formulaire envoie maintenant une vraie demande via Formspree au lieu d'un simple message local.
+            Indiquez votre nom, votre telephone, le jour souhaite et le nombre de couverts.
+            Votre demande est transmise directement au restaurant pour retour selon les disponibilites du service.
           </p>
           <div class="reservation-points">
             <span>Midi du mardi au samedi</span>
             <span>Soir le vendredi et le samedi</span>
             <span>Confirmation selon disponibilites</span>
           </div>
-          <a href="tel:0238533987" class="btn-primary reservation-call">Appeler directement</a>
+          <a href="tel:0298291184" class="btn-primary reservation-call">Appeler directement</a>
         </div>
 
         <div class="reservation-card reveal reveal-delay-1">
@@ -580,7 +682,7 @@
         <div class="wave-divider"></div>
       </div>
 
-      <div class="horaires-grid reveal" style="margin-top: 2rem;">
+      <div class="horaires-grid reveal section-offset-md">
         <div class="horaires-card reveal">
           <h3>Horaires</h3>
           <div class="horaire-row">
@@ -611,7 +713,7 @@
             <span class="horaire-jour">Dimanche</span>
             <span class="horaire-ferme">Ferme</span>
           </div>
-          <p class="season-line">A partir d'avril : ouverture midi et soir, du mardi au samedi.</p>
+          <p class="season-line">Horaires communiques sur le compte officiel du restaurant. En cas de doute, un appel reste le meilleur reflexe.</p>
         </div>
 
         <div class="horaires-card reveal reveal-delay-1">
@@ -623,7 +725,7 @@
             </div>
             <div class="practical-item">
               <span class="practical-label">Telephone</span>
-              <strong><a href="tel:0238533987">02 38 53 39 87</a></strong>
+              <strong><a href="tel:0298291184">02 98 29 11 84</a></strong>
             </div>
             <div class="practical-item">
               <span class="practical-label">Description</span>
@@ -631,13 +733,13 @@
             </div>
           </div>
           <div class="contact-actions-inline">
-            <a href="tel:0238533987" class="btn-primary">Appeler le restaurant</a>
+            <a href="tel:0298291184" class="btn-primary">Appeler le restaurant</a>
             <a href="https://www.instagram.com/lapetitefolie29/" target="_blank" rel="noopener noreferrer" class="btn-secondary dark-outline">Instagram</a>
           </div>
         </div>
       </div>
 
-      <div class="contact-grid" style="margin-top: 2rem;">
+      <div class="contact-grid section-offset-md">
         <div class="contact-info reveal">
           <div class="contact-item">
             <div class="contact-icon">
@@ -645,7 +747,7 @@
             </div>
             <div class="contact-item-text">
               <h4>Telephone</h4>
-              <p><a href="tel:0238533987">02 38 53 39 87</a></p>
+              <p><a href="tel:0298291184">02 98 29 11 84</a></p>
             </div>
           </div>
 
@@ -670,7 +772,7 @@
           </div>
 
           <div class="contact-social">
-            <a href="tel:0238533987" class="social-link social-call" aria-label="Appeler le restaurant">
+            <a href="tel:0298291184" class="social-link social-call" aria-label="Appeler le restaurant">
               <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff"/></svg>
             </a>
             <a href="https://www.instagram.com/lapetitefolie29/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
@@ -694,7 +796,7 @@
             des plats et des informations utiles.
           </p>
           <div class="contact-panel-actions">
-            <a href="tel:0238533987" class="btn-primary">Appeler</a>
+            <a href="tel:0298291184" class="btn-primary">Appeler</a>
             <a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer" class="btn-secondary">Itineraire</a>
           </div>
           <div class="contact-docs">
@@ -714,7 +816,7 @@
         <div class="map-copy">
           <p class="section-tag">Plan d'acces</p>
           <h3>Nous trouver facilement</h3>
-          <p>Le plan est charge en lazy loading pour garder la page fluide tout en donnant un acces direct a l'adresse du restaurant.</p>
+          <p>Un acces direct a l'adresse du restaurant, avec un plan embarque seulement quand il devient utile a la consultation.</p>
         </div>
         <div class="map-frame">
           <iframe
@@ -748,7 +850,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <p><a href="tel:0238533987">02 38 53 39 87</a></p>
+        <p><a href="tel:0298291184">02 98 29 11 84</a></p>
         <p><a href="https://www.instagram.com/lapetitefolie29/" target="_blank" rel="noopener noreferrer">Instagram officiel</a></p>
         <p><a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer">66 Av. de la Mer, 29250 Saint-Pol-de-Leon</a></p>
         <p><a href="mentions-legales.html">Mentions legales</a></p>

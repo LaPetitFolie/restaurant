@@ -2,6 +2,11 @@ const header = document.getElementById("header");
 const heroBg = document.getElementById("heroBg");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const reveals = document.querySelectorAll(".reveal");
+const hamburger = document.getElementById("hamburgerBtn");
+const mobileNav = document.getElementById("mobileNav");
+const overlay = document.querySelector(".mobile-overlay");
+const mobileCloseTriggers = document.querySelectorAll("[data-mobile-close='true']");
+let lastFocusedElement = null;
 
 function revealElementTree(target) {
   if (!target) {
@@ -31,22 +36,65 @@ function revealFromHash(hash) {
   revealElementTree(target);
 }
 
-window.toggleMobileNav = function toggleMobileNav() {
-  const hamburger = document.getElementById("hamburgerBtn");
-  const mobileNav = document.querySelector(".mobile-nav");
-  const overlay = document.querySelector(".mobile-overlay");
-
+function setMobileNavState(isOpen) {
   if (!hamburger || !mobileNav || !overlay) {
     return;
   }
 
-  const isOpen = mobileNav.classList.toggle("open");
-  hamburger.classList.toggle("active");
-  overlay.classList.toggle("open");
-  document.body.style.overflow = isOpen ? "hidden" : "";
+  mobileNav.classList.toggle("open", isOpen);
+  hamburger.classList.toggle("active", isOpen);
+  overlay.classList.toggle("open", isOpen);
+  document.body.classList.toggle("nav-open", isOpen);
   hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
   mobileNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
-};
+}
+
+function getMobileFocusableElements() {
+  if (!mobileNav) {
+    return [];
+  }
+
+  return Array.from(
+    mobileNav.querySelectorAll("a, button, input, select, textarea, [tabindex]:not([tabindex='-1'])")
+  ).filter((element) => !element.hasAttribute("disabled"));
+}
+
+function openMobileNav() {
+  if (!mobileNav || !hamburger) {
+    return;
+  }
+
+  lastFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  setMobileNavState(true);
+  const [firstFocusable] = getMobileFocusableElements();
+  firstFocusable?.focus();
+}
+
+function closeMobileNav() {
+  if (!mobileNav || !hamburger) {
+    return;
+  }
+
+  setMobileNavState(false);
+  lastFocusedElement?.focus();
+}
+
+function toggleMobileNav() {
+  if (!mobileNav) {
+    return;
+  }
+
+  const isOpen = mobileNav.classList.contains("open");
+
+  if (isOpen) {
+    closeMobileNav();
+    return;
+  }
+
+  openMobileNav();
+}
+
+window.toggleMobileNav = toggleMobileNav;
 
 window.addEventListener(
   "scroll",
@@ -101,6 +149,53 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+hamburger?.addEventListener("click", () => {
+  toggleMobileNav();
+});
+
+overlay?.addEventListener("click", () => {
+  closeMobileNav();
+});
+
+mobileCloseTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    closeMobileNav();
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!mobileNav?.classList.contains("open")) {
+    return;
+  }
+
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeMobileNav();
+    return;
+  }
+
+  if (event.key !== "Tab") {
+    return;
+  }
+
+  const focusableElements = getMobileFocusableElements();
+
+  if (focusableElements.length === 0) {
+    return;
+  }
+
+  const firstFocusable = focusableElements[0];
+  const lastFocusable = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === firstFocusable) {
+    event.preventDefault();
+    lastFocusable.focus();
+  } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+    event.preventDefault();
+    firstFocusable.focus();
+  }
+});
+
 window.addEventListener("hashchange", () => {
   revealFromHash(window.location.hash);
 });
@@ -111,6 +206,47 @@ window.addEventListener("load", () => {
 
 const reservationForm = document.getElementById("reservationForm");
 const reservationStatus = document.getElementById("reservationStatus");
+const menuTabs = Array.from(document.querySelectorAll("[data-menu-tab]"));
+const menuPanels = Array.from(document.querySelectorAll("[data-menu-panel]"));
+
+function activateMenuTab(targetKey) {
+  if (!targetKey || menuTabs.length === 0 || menuPanels.length === 0) {
+    return;
+  }
+
+  menuTabs.forEach((tab) => {
+    const isActive = tab.dataset.menuTab === targetKey;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", isActive ? "true" : "false");
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+
+  menuPanels.forEach((panel) => {
+    const isActive = panel.dataset.menuPanel === targetKey;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+menuTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => {
+    activateMenuTab(tab.dataset.menuTab);
+  });
+
+  tab.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+      return;
+    }
+
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    const nextIndex = (index + direction + menuTabs.length) % menuTabs.length;
+    const nextTab = menuTabs[nextIndex];
+
+    nextTab.focus();
+    activateMenuTab(nextTab.dataset.menuTab);
+  });
+});
 
 if (reservationForm && reservationStatus) {
   reservationForm.addEventListener("submit", async (event) => {
