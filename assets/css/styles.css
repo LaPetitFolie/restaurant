@@ -2159,8 +2159,9 @@ footer {
     gap: 0.35rem;
     padding: 1rem 3.6rem 1rem 1rem;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(18, 37, 72, 0.12);
+    box-shadow: 0 12px 28px rgba(18, 37, 72, 0.08);
     list-style: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -2173,8 +2174,8 @@ footer {
     right: 1.15rem;
     width: 0.7rem;
     height: 0.7rem;
-    border-right: 2px solid rgba(255, 255, 255, 0.82);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.82);
+    border-right: 2px solid rgba(18, 37, 72, 0.78);
+    border-bottom: 2px solid rgba(18, 37, 72, 0.78);
     transform: translateY(-60%) rotate(45deg);
     transition: transform 0.25s ease;
   }
@@ -2185,7 +2186,7 @@ footer {
 
   .mobile-accordion-title {
     display: block;
-    color: #fff;
+    color: var(--bleu-baie);
     font-family: var(--font-display);
     font-size: 1.55rem;
     font-weight: 700;
@@ -2194,14 +2195,14 @@ footer {
 
   .mobile-accordion-subtitle {
     display: block;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(18, 37, 72, 0.72);
     font-size: 0.93rem;
     line-height: 1.5;
   }
 
   .mobile-accordion-kicker {
     display: block;
-    color: rgba(255, 255, 255, 0.68);
+    color: rgba(18, 37, 72, 0.58);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -2224,6 +2225,24 @@ footer {
   .mobile-accordion-dark .mobile-accordion-summary {
     background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .mobile-accordion-dark .mobile-accordion-summary::after {
+    border-right-color: rgba(255, 255, 255, 0.82);
+    border-bottom-color: rgba(255, 255, 255, 0.82);
+  }
+
+  .mobile-accordion-dark .mobile-accordion-title {
+    color: #fff;
+  }
+
+  .mobile-accordion-dark .mobile-accordion-subtitle {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .mobile-accordion-dark .mobile-accordion-kicker {
+    color: rgba(255, 255, 255, 0.68);
   }
 
   header {
