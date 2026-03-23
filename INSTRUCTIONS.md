@@ -136,6 +136,8 @@ Le site est une base statique propre, sans framework, composee de :
 - Mise a jour du sitemap et ajout d'une page `politique-confidentialite.html`.
 - Footer et mentions legales renforces pour mieux encadrer le formulaire.
 - Optimisation de rendu ajoutee sur les sections lourdes avec `content-visibility`.
+- Bloc des formules du midi retravaille pour supprimer la fausse affordance de bouton et adopter une lecture de type ardoise.
+- Hero allegée pour clarifier la premiere vue : message raccourci, CTA principal recentre sur la reservation et densite visuelle reduite.
 
 Rapport de reference :
 

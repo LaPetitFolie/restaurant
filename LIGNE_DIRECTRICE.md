@@ -101,6 +101,8 @@ Une decision est bonne si elle :
   - confidentialite a formaliser si le formulaire reste en production
 - Une page de confidentialite minimale a ete ajoutee pour que le formulaire ne repose plus sur un vide legal complet.
 - La prochaine marche n'est plus de creer cette page, mais de l'enrichir si les usages de donnees evoluent.
+- La zone des formules du midi doit se lire comme une information de menu, jamais comme un selecteur ou un achat en ligne.
+- La premiere vue doit rester immediate a comprendre : une promesse courte, un seul axe principal, et aucune surcharge de texte.
 
 Rappel important :
 
