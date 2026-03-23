@@ -147,6 +147,8 @@ Le site est une base statique propre, sans framework, composee de :
 - Un palier tablette explicite doit amortir la transition entre desktop et mobile, au lieu de laisser tout basculer brutalement au seul breakpoint `900px`.
 - La dette de specificite CSS doit rester sous controle : les `!important` ne sont acceptes que pour `prefers-reduced-motion` ou un vrai cas d'override impossible autrement.
 - Verification visuelle locale a refaire au minimum en mobile et en `1024px` apres chaque gros changement de layout.
+- `assets/js/main.js` doit rester documente sur ses flux principaux : navigation mobile, accordÃ©ons, media differe, tabs et formulaire.
+- Les nettoyages JS sans effet visuel doivent privilegier JSDoc, noms explicites et commentaires d'intention avant toute refactorisation structurelle.
 
 Rapport de reference :
 

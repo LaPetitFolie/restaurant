@@ -6,8 +6,20 @@ const hamburger = document.getElementById("hamburgerBtn");
 const mobileNav = document.getElementById("mobileNav");
 const overlay = document.querySelector(".mobile-overlay");
 const mobileCloseTriggers = document.querySelectorAll("[data-mobile-close='true']");
+
+/**
+ * Stores the last focused element before the mobile navigation opens so focus
+ * can be restored when the drawer closes.
+ *
+ * @type {HTMLElement | null}
+ */
 let lastFocusedElement = null;
 
+/**
+ * Immediately marks a target and its nested reveal items as visible.
+ *
+ * @param {Element | null | undefined} target
+ */
 function revealElementTree(target) {
   if (!target) {
     return;
@@ -22,6 +34,12 @@ function revealElementTree(target) {
   });
 }
 
+/**
+ * Reveals the section pointed to by the current hash and opens its mobile
+ * accordion when relevant.
+ *
+ * @param {string | null | undefined} hash
+ */
 function revealFromHash(hash) {
   if (!hash || hash === "#") {
     return;
@@ -37,6 +55,11 @@ function revealFromHash(hash) {
   revealElementTree(target);
 }
 
+/**
+ * Applies the visual and ARIA state of the mobile navigation drawer.
+ *
+ * @param {boolean} isOpen
+ */
 function setMobileNavState(isOpen) {
   if (!hamburger || !mobileNav || !overlay) {
     return;
@@ -50,6 +73,11 @@ function setMobileNavState(isOpen) {
   mobileNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
 }
 
+/**
+ * Returns the focusable elements currently available inside the mobile drawer.
+ *
+ * @returns {HTMLElement[]}
+ */
 function getMobileFocusableElements() {
   if (!mobileNav) {
     return [];
@@ -60,6 +88,9 @@ function getMobileFocusableElements() {
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
+/**
+ * Opens the mobile navigation and moves focus to its first actionable element.
+ */
 function openMobileNav() {
   if (!mobileNav || !hamburger) {
     return;
@@ -71,6 +102,9 @@ function openMobileNav() {
   firstFocusable?.focus();
 }
 
+/**
+ * Closes the mobile navigation and restores focus to the previous element.
+ */
 function closeMobileNav() {
   if (!mobileNav || !hamburger) {
     return;
@@ -80,6 +114,9 @@ function closeMobileNav() {
   lastFocusedElement?.focus();
 }
 
+/**
+ * Toggles the mobile navigation drawer.
+ */
 function toggleMobileNav() {
   if (!mobileNav) {
     return;
@@ -209,6 +246,21 @@ const reservationForm = document.getElementById("reservationForm");
 const reservationStatus = document.getElementById("reservationStatus");
 const menuTabs = Array.from(document.querySelectorAll("[data-menu-tab]"));
 const menuPanels = Array.from(document.querySelectorAll("[data-menu-panel]"));
+
+/**
+ * Describes how each desktop section should be repackaged as a mobile
+ * accordion without duplicating the source markup.
+ *
+ * @type {Array<{
+ *   section: string,
+ *   title: string,
+ *   subtitle: string,
+ *   panelSelectors: string[],
+ *   kicker?: string,
+ *   hasDesktopHeading?: boolean,
+ *   dark?: boolean
+ * }>}
+ */
 const mobileAccordionSections = [
   {
     section: "#restaurant",
@@ -267,6 +319,10 @@ const mobileAccordions = [];
 const mobileAccordionMedia = window.matchMedia("(max-width: 768px)");
 const mediaPreloadCache = new Set();
 
+/**
+ * Builds the mobile accordion shells once and moves the existing section nodes
+ * into those shells. Desktop markup remains the source of truth.
+ */
 function buildMobileAccordions() {
   mobileAccordionSections.forEach((config) => {
     const section = document.querySelector(config.section);
@@ -354,6 +410,12 @@ function buildMobileAccordions() {
   });
 }
 
+/**
+ * Preloads the first images from an accordion just before it opens, which
+ * reduces the perceived delay in long mobile sections.
+ *
+ * @param {Element & { _panelInner?: HTMLElement }} accordion
+ */
 function primeAccordionMedia(accordion) {
   const panelInner = accordion?._panelInner;
 
@@ -379,6 +441,19 @@ function primeAccordionMedia(accordion) {
     });
 }
 
+/**
+ * Synchronizes an accordion visual state, including ARIA, height animation and
+ * lazy media priming when a panel is opened.
+ *
+ * @param {Element & {
+ *   _panel?: HTMLElement,
+ *   _panelInner?: HTMLElement,
+ *   _button?: HTMLButtonElement,
+ *   dataset: DOMStringMap
+ * }} accordion
+ * @param {boolean} isOpen
+ * @param {boolean} [animate=true]
+ */
 function setAccordionState(accordion, isOpen, animate = true) {
   const panel = accordion._panel;
   const panelInner = accordion._panelInner;
@@ -434,6 +509,10 @@ function setAccordionState(accordion, isOpen, animate = true) {
   });
 }
 
+/**
+ * Reconciles every accordion with the current viewport. On mobile the first
+ * card opens by default, while desktop keeps all content visible.
+ */
 function syncMobileAccordions() {
   if (mobileAccordions.length === 0) {
     return;
@@ -452,6 +531,12 @@ function syncMobileAccordions() {
   });
 }
 
+/**
+ * Opens the accordion that contains the requested target when the user lands
+ * on an anchored section from mobile navigation or deep links.
+ *
+ * @param {Element | null | undefined} target
+ */
 function openAccordionForTarget(target) {
   if (!target || !mobileAccordionMedia.matches) {
     return;
@@ -471,6 +556,12 @@ function openAccordionForTarget(target) {
   });
 }
 
+/**
+ * Updates an animating accordion height after internal media or embeds change
+ * the panel content size.
+ *
+ * @param {Element} node
+ */
 function refreshAccordionHeightForNode(node) {
   const panel = node.closest?.(".mobile-accordion-panel");
   const inner = panel?.querySelector(".mobile-accordion-panel-inner");
@@ -482,6 +573,10 @@ function refreshAccordionHeightForNode(node) {
   panel.style.height = `${inner.scrollHeight}px`;
 }
 
+/**
+ * Adds progressive loading states to deferred media and to the map iframe so
+ * mobile accordions do not jump when content finishes loading.
+ */
 function enhanceDeferredMedia() {
   const mediaSelector = ".kitchen-visual img, .experience-photo img, .galerie-item img, .contact-doc-card img";
 
@@ -552,6 +647,8 @@ buildMobileAccordions();
 syncMobileAccordions();
 enhanceDeferredMedia();
 
+// Accordion click handling is registered after creation because the buttons do
+// not exist in the original desktop DOM.
 mobileAccordions.forEach((accordion) => {
   accordion._button?.addEventListener("click", () => {
     const shouldOpen = accordion.dataset.open !== "true";
@@ -565,6 +662,8 @@ mobileAccordions.forEach((accordion) => {
   });
 });
 
+// When the viewport crosses the mobile threshold, keep accordions and deferred
+// map loading aligned with the new layout mode.
 mobileAccordionMedia.addEventListener("change", () => {
   syncMobileAccordions();
 
@@ -589,6 +688,11 @@ mobileAccordionMedia.addEventListener("change", () => {
   }
 });
 
+/**
+ * Activates the selected menu tab and hides the inactive panel.
+ *
+ * @param {string | undefined} targetKey
+ */
 function activateMenuTab(targetKey) {
   if (!targetKey || menuTabs.length === 0 || menuPanels.length === 0) {
     return;
@@ -608,6 +712,8 @@ function activateMenuTab(targetKey) {
   });
 }
 
+// Tabs support both pointer interaction and arrow-key navigation so the menu
+// remains fast to scan on touch devices and keyboard-friendly on desktop.
 menuTabs.forEach((tab, index) => {
   tab.addEventListener("click", () => {
     activateMenuTab(tab.dataset.menuTab);
@@ -629,6 +735,8 @@ menuTabs.forEach((tab, index) => {
 });
 
 if (reservationForm && reservationStatus) {
+  // The reservation form keeps the feedback loop inline to avoid leaving the
+  // page or opening a new tab for a simple availability request.
   reservationForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
