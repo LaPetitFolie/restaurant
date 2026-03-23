@@ -99,6 +99,8 @@ Une decision est bonne si elle :
   - adresse finale a verrouiller par source proprietaire
   - email officiel a confirmer
   - confidentialite a formaliser si le formulaire reste en production
+- Une page de confidentialite minimale a ete ajoutee pour que le formulaire ne repose plus sur un vide legal complet.
+- La prochaine marche n'est plus de creer cette page, mais de l'enrichir si les usages de donnees evoluent.
 
 Rappel important :
 

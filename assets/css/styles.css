@@ -533,6 +533,17 @@ section {
   margin: 0 auto;
 }
 
+#restaurant,
+.experience-section,
+#carte,
+.kitchen-section,
+#galerie,
+#reservation,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.9rem);

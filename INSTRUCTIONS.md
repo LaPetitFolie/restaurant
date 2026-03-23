@@ -132,6 +132,10 @@ Le site est une base statique propre, sans framework, composee de :
 - Styles inline residuels remplaces par des classes utilitaires.
 - Message horaire relatif retire au profit d'une formulation durable.
 - Rendu global du site renforce avec une direction visuelle plus aboutie et plus coherente.
+- Audit live GitHub Pages relance.
+- Mise a jour du sitemap et ajout d'une page `politique-confidentialite.html`.
+- Footer et mentions legales renforces pour mieux encadrer le formulaire.
+- Optimisation de rendu ajoutee sur les sections lourdes avec `content-visibility`.
 
 Rapport de reference :
 
@@ -146,4 +150,4 @@ Reste a traiter plus tard si besoin :
 
 - verifier l'adresse definitive par source proprietaire ou fiche Google officielle
 - renseigner l'email officiel
-- ajouter une page de confidentialite si le formulaire est conserve en production
+- enrichir la page de confidentialite si le formulaire gagne en complexite ou en outils tiers
