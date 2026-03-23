@@ -154,6 +154,10 @@ header.scrolled {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
+.logo picture {
+  display: block;
+}
+
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -378,6 +382,21 @@ header.scrolled .hamburger span {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero-bg picture,
+.resto-img picture,
+.experience-photo picture,
+.kitchen-visual picture,
+.galerie-item picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-doc-card picture {
+  display: block;
+  width: 100%;
 }
 
 .hero-overlay {

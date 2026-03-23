@@ -108,6 +108,7 @@ Une decision est bonne si elle :
 - Les panneaux ouverts sur mobile doivent conserver une lisibilite immediate : texte fonce, sous-cartes claires et contrastes coherents avec la carte blanche de reference.
 - Les elements a forte charge visuelle sur mobile (photos, carte d'acces, badges prix) doivent etre integres avec retenue et clarte, jamais comme des surgissements techniques ou des stickers parasites.
 - Sur smartphone, la carte d'acces doit se comporter comme un service declenchable, pas comme un embed imposé : l'utilisateur choisit d'ouvrir l'interactif quand il en a besoin.
+- Les optimisations techniques visibles par l'utilisateur doivent rester transparentes : meilleures images, meme identite, meme cadrage, aucune impression de degradation.
 
 Rappel important :
 

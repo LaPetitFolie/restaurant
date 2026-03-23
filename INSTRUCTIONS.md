@@ -143,6 +143,7 @@ Le site est une base statique propre, sans framework, composee de :
 - Les contenus internes de `La carte` et des informations pratiques doivent rester lisibles sur mobile en fond clair : pas de texte blanc herite des sections desktop, pas de sous-cartes sombres residuelles.
 - Sur mobile, les medias ouverts dans un accordéon doivent arriver avec un chargement doux : placeholder discret, fondu court, et aucune apparition brutale d'image ou d'iframe.
 - Le plan d'acces mobile doit rester leger : activation explicite de la carte interactive, jamais de gros bloc Google Maps charge d'emblee dans le flux.
+- Les medias HTML principaux doivent servir un format moderne quand possible : `<picture>` avec `webp` en source et JPG en fallback, sans casser les dimensions ni le rendu.
 
 Rapport de reference :
 

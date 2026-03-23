@@ -35,7 +35,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
   <link rel="llms" href="llms.txt">
-  <link rel="preload" as="image" href="assets/images/terrasse-jour.jpg">
+  <link rel="preload" as="image" href="assets/images/terrasse-jour.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap">
@@ -103,7 +103,10 @@
   <a href="#main-content" class="skip-link">Aller au contenu</a>
   <header id="header" role="banner">
     <a href="#hero" class="logo" aria-label="Retour a l'accueil - La Petite Folie">
-      <img src="assets/images/logo-la-petite-folie.jpg" alt="Logo La Petite Folie" width="960" height="960" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="assets/images/logo-la-petite-folie.webp" type="image/webp">
+        <img src="assets/images/logo-la-petite-folie.jpg" alt="Logo La Petite Folie" width="960" height="960" fetchpriority="high" decoding="async">
+      </picture>
       <span class="logo-text">
         <strong>La Petite Folie</strong>
         <em>Restaurant</em>
@@ -137,14 +140,17 @@
   <main id="main-content">
   <section class="hero" id="hero">
     <div class="hero-bg" id="heroBg">
-      <img
-        src="assets/images/terrasse-jour.jpg"
-        alt="Terrasse de La Petite Folie baignee de lumiere"
-        width="720"
-        height="960"
-        fetchpriority="high"
-        decoding="async"
-      >
+      <picture>
+        <source srcset="assets/images/terrasse-jour.webp" type="image/webp">
+        <img
+          src="assets/images/terrasse-jour.jpg"
+          alt="Terrasse de La Petite Folie baignee de lumiere"
+          width="720"
+          height="960"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </picture>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -163,7 +169,7 @@
       </div>
     </div>
     <div class="scroll-indicator" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </section>
 
@@ -177,7 +183,10 @@
 
       <div class="resto-grid reveal section-offset-lg">
         <div class="resto-img">
-          <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/terrasse-jour.webp" type="image/webp">
+            <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="resto-text">
           <h3>Le lieu</h3>
@@ -196,7 +205,10 @@
 
       <div class="resto-grid reverse reveal section-offset-lg">
         <div class="resto-img">
-          <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/bar-equipe.webp" type="image/webp">
+            <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="resto-text">
           <h3>L'Esprit de la Maison : Votre Escale Solaire</h3>
@@ -236,15 +248,24 @@
 
         <div class="experience-collage reveal reveal-delay-1">
           <figure class="experience-photo tall">
-            <img src="assets/images/salle-principale.jpg" alt="Salle principale de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/salle-principale.webp" type="image/webp">
+              <img src="assets/images/salle-principale.jpg" alt="Salle principale de La Petite Folie" width="1536" height="2048" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Salle principale</figcaption>
           </figure>
           <figure class="experience-photo">
-            <img src="assets/images/vue-baie-soir.jpg" alt="Vue exterieure en fin de journee" width="2048" height="1536" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/vue-baie-soir.webp" type="image/webp">
+              <img src="assets/images/vue-baie-soir.jpg" alt="Vue exterieure en fin de journee" width="2048" height="1536" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Vue du soir</figcaption>
           </figure>
           <figure class="experience-photo">
-            <img src="assets/images/salle-service.jpg" alt="Salle en service a La Petite Folie" width="1698" height="2048" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/salle-service.webp" type="image/webp">
+              <img src="assets/images/salle-service.jpg" alt="Salle en service a La Petite Folie" width="1698" height="2048" loading="lazy" decoding="async">
+            </picture>
             <figcaption>Service</figcaption>
           </figure>
         </div>
@@ -521,7 +542,10 @@
       <div class="kitchen-grid">
         <article class="kitchen-card reveal">
           <div class="kitchen-visual">
-            <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/cuisine-preparation.webp" type="image/webp">
+              <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="kitchen-copy">
             <h3>Mise en place</h3>
@@ -531,7 +555,10 @@
 
         <article class="kitchen-card reveal reveal-delay-1">
           <div class="kitchen-visual">
-            <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/cuisine-details.webp" type="image/webp">
+              <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="kitchen-copy">
             <h3>Travail du detail</h3>
@@ -541,7 +568,10 @@
 
         <article class="kitchen-card reveal reveal-delay-2">
           <div class="kitchen-visual">
-            <img src="assets/images/trancheuse-cuisine.jpg" alt="Outil et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="assets/images/trancheuse-cuisine.webp" type="image/webp">
+              <img src="assets/images/trancheuse-cuisine.jpg" alt="Outil et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="kitchen-copy">
             <h3>Outils et matiere</h3>
@@ -562,35 +592,59 @@
 
       <div class="galerie-grid section-offset-md">
         <figure class="galerie-item reveal">
-          <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/terrasse-jour.webp" type="image/webp">
+            <img src="assets/images/terrasse-jour.jpg" alt="Terrasse de La Petite Folie" width="720" height="960" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Terrasse</figcaption>
         </figure>
         <figure class="galerie-item reveal reveal-delay-1">
-          <img src="assets/images/vue-baie-soir.jpg" alt="Vue du soir sur l'exterieur" width="2048" height="1536" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/vue-baie-soir.webp" type="image/webp">
+            <img src="assets/images/vue-baie-soir.jpg" alt="Vue du soir sur l'exterieur" width="2048" height="1536" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Vue du soir</figcaption>
         </figure>
         <figure class="galerie-item reveal reveal-delay-2">
-          <img src="assets/images/salle-principale.jpg" alt="Salle principale du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/salle-principale.webp" type="image/webp">
+            <img src="assets/images/salle-principale.jpg" alt="Salle principale du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Salle principale</figcaption>
         </figure>
         <figure class="galerie-item reveal">
-          <img src="assets/images/salle-service.jpg" alt="Service en salle" width="1698" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/salle-service.webp" type="image/webp">
+            <img src="assets/images/salle-service.jpg" alt="Service en salle" width="1698" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Service</figcaption>
         </figure>
         <figure class="galerie-item reveal reveal-delay-1">
-          <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/bar-equipe.webp" type="image/webp">
+            <img src="assets/images/bar-equipe.jpg" alt="Equipe et bar du restaurant" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Equipe</figcaption>
         </figure>
         <figure class="galerie-item reveal reveal-delay-2">
-          <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/cuisine-preparation.webp" type="image/webp">
+            <img src="assets/images/cuisine-preparation.jpg" alt="Preparation en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Preparation</figcaption>
         </figure>
         <figure class="galerie-item reveal">
-          <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/cuisine-details.webp" type="image/webp">
+            <img src="assets/images/cuisine-details.jpg" alt="Detail de preparation culinaire" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Detail</figcaption>
         </figure>
         <figure class="galerie-item reveal reveal-delay-1">
-          <img src="assets/images/trancheuse-cuisine.jpg" alt="Outils et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="assets/images/trancheuse-cuisine.webp" type="image/webp">
+            <img src="assets/images/trancheuse-cuisine.jpg" alt="Outils et geste en cuisine" width="1536" height="2048" loading="lazy" decoding="async">
+          </picture>
           <figcaption>Geste</figcaption>
         </figure>
       </div>
@@ -743,7 +797,7 @@
         <div class="contact-info reveal">
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div class="contact-item-text">
               <h4>Telephone</h4>
@@ -753,7 +807,7 @@
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div class="contact-item-text">
               <h4>Adresse</h4>
@@ -763,7 +817,7 @@
 
           <div class="contact-item">
             <div class="contact-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="contact-item-text">
               <h4>Instagram</h4>
@@ -773,7 +827,7 @@
 
           <div class="contact-social">
             <a href="tel:0298291184" class="social-link social-call" aria-label="Appeler le restaurant">
-              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff"/></svg>
             </a>
             <a href="https://www.instagram.com/lapetitefolie29/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -783,7 +837,7 @@
               </svg>
             </a>
             <a href="https://www.google.com/maps/search/?api=1&query=66+Av.+de+la+Mer+29250+Saint-Pol-de-Leon" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Google Maps">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>
             </a>
           </div>
         </div>
@@ -801,11 +855,17 @@
           </div>
           <div class="contact-docs">
             <figure class="contact-doc-card">
-              <img src="assets/images/menu-formule.jpg" alt="Visuel des formules du midi" width="1409" height="2000" loading="lazy" decoding="async">
+              <picture>
+                <source srcset="assets/images/menu-formule.webp" type="image/webp">
+                <img src="assets/images/menu-formule.jpg" alt="Visuel des formules du midi" width="1409" height="2000" loading="lazy" decoding="async">
+              </picture>
               <figcaption>Formules du midi</figcaption>
             </figure>
             <figure class="contact-doc-card">
-              <img src="assets/images/horaires.jpg" alt="Visuel des horaires du restaurant" width="1410" height="2001" loading="lazy" decoding="async">
+              <picture>
+                <source srcset="assets/images/horaires.webp" type="image/webp">
+                <img src="assets/images/horaires.jpg" alt="Visuel des horaires du restaurant" width="1410" height="2001" loading="lazy" decoding="async">
+              </picture>
               <figcaption>Horaires</figcaption>
             </figure>
           </div>
