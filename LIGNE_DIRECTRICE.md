@@ -10,7 +10,7 @@ En moins de 30 secondes, un visiteur doit pouvoir :
 - voir une carte claire
 - verifier les horaires
 - appeler ou reserver
-- retrouver l'adresse et le Facebook officiel
+- retrouver l'adresse et l'Instagram officiel
 
 ## Ligne editoriale
 

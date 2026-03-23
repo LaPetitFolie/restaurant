@@ -40,7 +40,7 @@ Le site est une base statique propre, sans framework, composee de :
 - integration des photos locales du restaurant
 - carte structuree en blocs lisibles
 - horaires et informations pratiques visibles
-- lien Facebook officiel integre
+- lien Instagram officiel integre
 
 ### JS
 
@@ -69,7 +69,7 @@ Le site est une base statique propre, sans framework, composee de :
   - telephone
   - email
   - horaires
-  - lien Facebook
+  - lien Instagram
   doit etre verifiee avant publication.
 
 ### HTML
