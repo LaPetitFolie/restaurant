@@ -534,6 +534,26 @@ section {
   margin: 0 auto;
 }
 
+.mobile-accordion {
+  display: block;
+}
+
+.mobile-accordion-summary {
+  display: none;
+}
+
+.mobile-accordion-panel {
+  display: block;
+}
+
+.mobile-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-accordion-summary::marker {
+  display: none;
+}
+
 #restaurant,
 .experience-section,
 #carte,
@@ -2125,6 +2145,87 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .desktop-section-head {
+    display: none;
+  }
+
+  .mobile-accordion {
+    margin-top: 0.35rem;
+  }
+
+  .mobile-accordion-summary {
+    position: relative;
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem 3.6rem 1rem 1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    list-style: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-accordion-summary::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1.15rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.82);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.82);
+    transform: translateY(-60%) rotate(45deg);
+    transition: transform 0.25s ease;
+  }
+
+  .mobile-accordion[open] .mobile-accordion-summary::after {
+    transform: translateY(-25%) rotate(-135deg);
+  }
+
+  .mobile-accordion-title {
+    display: block;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  .mobile-accordion-subtitle {
+    display: block;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.93rem;
+    line-height: 1.5;
+  }
+
+  .mobile-accordion-kicker {
+    display: block;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .mobile-accordion-panel {
+    padding-top: 1rem;
+  }
+
+  .mobile-accordion:not([open]) .mobile-accordion-panel {
+    display: none;
+  }
+
+  .mobile-accordion .section-offset-md,
+  .mobile-accordion .section-offset-lg {
+    margin-top: 0;
+  }
+
+  .mobile-accordion-dark .mobile-accordion-summary {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
   header {
     padding: 0.9rem 1.2rem;
   }

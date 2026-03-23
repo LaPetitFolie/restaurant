@@ -33,6 +33,7 @@ function revealFromHash(hash) {
     return;
   }
 
+  openAccordionForTarget(target);
   revealElementTree(target);
 }
 
@@ -204,10 +205,181 @@ window.addEventListener("load", () => {
   revealFromHash(window.location.hash);
 });
 
+mobileAccordionMedia.addEventListener("change", () => {
+  syncMobileAccordions();
+});
+
 const reservationForm = document.getElementById("reservationForm");
 const reservationStatus = document.getElementById("reservationStatus");
 const menuTabs = Array.from(document.querySelectorAll("[data-menu-tab]"));
 const menuPanels = Array.from(document.querySelectorAll("[data-menu-panel]"));
+const mobileAccordionSections = [
+  {
+    section: "#restaurant",
+    title: "Le restaurant",
+    subtitle: "Une terrasse vive, une salle simple et un lieu qui raconte le geste sans detour.",
+    panelSelectors: [".resto-grid"],
+    hasDesktopHeading: true,
+  },
+  {
+    section: ".experience-section",
+    title: "Une table ouverte sur l'horizon.",
+    subtitle: "Une cuisine sincere, une vue imprenable et une atmosphere iodee qui s'adapte au rythme de chacun.",
+    kicker: "L'ambiance",
+    panelSelectors: [".experience-layout"],
+    dark: true,
+  },
+  {
+    section: "#carte",
+    title: "La carte",
+    subtitle: "Formules, menu du midi et selections de saison dans une lecture plus legere sur smartphone.",
+    panelSelectors: [".menu-highlight", ".menu-tabs-shell", ".signature-section", ".carte-note"],
+    hasDesktopHeading: true,
+    dark: true,
+  },
+  {
+    section: ".kitchen-section",
+    title: "La cuisine en mouvement",
+    subtitle: "Des plans de travail, de la matiere et de la preparation dans une section repliable sur mobile.",
+    kicker: "Le geste",
+    panelSelectors: [".kitchen-grid"],
+    hasDesktopHeading: true,
+  },
+  {
+    section: "#galerie",
+    title: "Galerie",
+    subtitle: "Les photos du lieu et du service restent disponibles, sans allonger inutilement la page mobile.",
+    panelSelectors: [".galerie-grid"],
+    hasDesktopHeading: true,
+  },
+  {
+    section: "#reservation",
+    title: "Reservation",
+    subtitle: "Une demande simple, claire et rapide, repliable sur smartphone pour garder une page plus courte.",
+    panelSelectors: [".reservation-layout"],
+    hasDesktopHeading: true,
+  },
+  {
+    section: "#contact",
+    title: "Informations pratiques",
+    subtitle: "Adresse, telephone, horaires et acces rapide sans obliger a tout faire defiler sur mobile.",
+    panelSelectors: [".horaires-grid", ".contact-grid"],
+    hasDesktopHeading: true,
+  },
+];
+const mobileAccordions = [];
+const mobileAccordionMedia = window.matchMedia("(max-width: 768px)");
+
+function buildMobileAccordions() {
+  mobileAccordionSections.forEach((config) => {
+    const section = document.querySelector(config.section);
+    const inner = section?.querySelector(".section-inner");
+
+    if (!section || !inner || inner.querySelector(".mobile-accordion")) {
+      return;
+    }
+
+    const nodes = config.panelSelectors.flatMap((selector) => Array.from(inner.querySelectorAll(`:scope > ${selector}`)));
+
+    if (nodes.length === 0) {
+      return;
+    }
+
+    if (config.hasDesktopHeading && inner.firstElementChild) {
+      inner.firstElementChild.classList.add("desktop-section-head");
+    }
+
+    const details = document.createElement("details");
+    details.className = config.dark ? "mobile-accordion mobile-accordion-dark" : "mobile-accordion";
+    details.setAttribute("data-accordion", "");
+
+    const summary = document.createElement("summary");
+    summary.className = "mobile-accordion-summary";
+
+    if (config.kicker) {
+      const kicker = document.createElement("span");
+      kicker.className = "mobile-accordion-kicker";
+      kicker.textContent = config.kicker;
+      summary.appendChild(kicker);
+    }
+
+    const title = document.createElement("span");
+    title.className = "mobile-accordion-title";
+    title.textContent = config.title;
+    summary.appendChild(title);
+
+    const subtitle = document.createElement("span");
+    subtitle.className = "mobile-accordion-subtitle";
+    subtitle.textContent = config.subtitle;
+    summary.appendChild(subtitle);
+
+    const panel = document.createElement("div");
+    panel.className = "mobile-accordion-panel";
+
+    nodes.forEach((node) => panel.appendChild(node));
+    details.append(summary, panel);
+    inner.appendChild(details);
+    mobileAccordions.push(details);
+  });
+}
+
+function syncMobileAccordions() {
+  if (mobileAccordions.length === 0) {
+    return;
+  }
+
+  if (mobileAccordionMedia.matches) {
+    mobileAccordions.forEach((accordion, index) => {
+      if (!accordion.dataset.userTouched) {
+        accordion.open = index === 0;
+      }
+    });
+    return;
+  }
+
+  mobileAccordions.forEach((accordion) => {
+    accordion.open = true;
+  });
+}
+
+function openAccordionForTarget(target) {
+  if (!target || !mobileAccordionMedia.matches) {
+    return;
+  }
+
+  const accordion = target.querySelector?.(".mobile-accordion") || target.closest?.(".mobile-accordion");
+
+  if (!accordion) {
+    return;
+  }
+
+  mobileAccordions.forEach((item) => {
+    item.open = item === accordion;
+  });
+}
+
+buildMobileAccordions();
+syncMobileAccordions();
+
+mobileAccordions.forEach((accordion) => {
+  accordion.addEventListener("toggle", () => {
+    if (!mobileAccordionMedia.matches) {
+      return;
+    }
+
+    accordion.dataset.userTouched = "true";
+
+    if (!accordion.open) {
+      return;
+    }
+
+    mobileAccordions.forEach((item) => {
+      if (item !== accordion) {
+        item.open = false;
+      }
+    });
+  });
+});
 
 function activateMenuTab(targetKey) {
   if (!targetKey || menuTabs.length === 0 || menuPanels.length === 0) {

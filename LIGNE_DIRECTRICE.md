@@ -103,6 +103,7 @@ Une decision est bonne si elle :
 - La prochaine marche n'est plus de creer cette page, mais de l'enrichir si les usages de donnees evoluent.
 - La zone des formules du midi doit se lire comme une information de menu, jamais comme un selecteur ou un achat en ligne.
 - La premiere vue doit rester immediate a comprendre : une promesse courte, un seul axe principal, et aucune surcharge de texte.
+- Sur mobile, la reduction de longueur de page prime tant que le contenu reste accessible, indexable et integralement visible sur desktop.
 
 Rappel important :
 
