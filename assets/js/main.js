@@ -286,7 +286,7 @@ function buildMobileAccordions() {
     }
 
     const details = document.createElement("details");
-    details.className = config.dark ? "mobile-accordion mobile-accordion-dark" : "mobile-accordion";
+    details.className = "mobile-accordion";
     details.setAttribute("data-accordion", "");
 
     const summary = document.createElement("summary");
