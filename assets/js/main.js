@@ -285,12 +285,15 @@ function buildMobileAccordions() {
       inner.firstElementChild.classList.add("desktop-section-head");
     }
 
-    const details = document.createElement("details");
-    details.className = "mobile-accordion";
-    details.setAttribute("data-accordion", "");
+    const accordion = document.createElement("article");
+    accordion.className = "mobile-accordion";
+    accordion.setAttribute("data-accordion", "");
+    accordion.dataset.open = "false";
 
-    const summary = document.createElement("summary");
+    const summary = document.createElement("button");
+    summary.type = "button";
     summary.className = "mobile-accordion-summary";
+    summary.setAttribute("aria-expanded", "false");
 
     if (config.kicker) {
       const kicker = document.createElement("span");
@@ -311,11 +314,93 @@ function buildMobileAccordions() {
 
     const panel = document.createElement("div");
     panel.className = "mobile-accordion-panel";
+    panel.hidden = true;
 
-    nodes.forEach((node) => panel.appendChild(node));
-    details.append(summary, panel);
-    inner.appendChild(details);
-    mobileAccordions.push(details);
+    const panelInner = document.createElement("div");
+    panelInner.className = "mobile-accordion-panel-inner";
+    nodes.forEach((node) => panelInner.appendChild(node));
+    panel.appendChild(panelInner);
+
+    panel.addEventListener("transitionend", (event) => {
+      if (event.propertyName !== "height") {
+        return;
+      }
+
+      if (!mobileAccordionMedia.matches) {
+        panel.hidden = false;
+        panel.style.height = "auto";
+        panel.style.opacity = "1";
+        return;
+      }
+
+      if (accordion.dataset.open === "true") {
+        panel.hidden = false;
+        panel.style.height = "auto";
+        panel.style.opacity = "1";
+        return;
+      }
+
+      panel.hidden = true;
+    });
+
+    accordion.append(summary, panel);
+    accordion._button = summary;
+    accordion._panel = panel;
+    accordion._panelInner = panelInner;
+
+    inner.appendChild(accordion);
+    mobileAccordions.push(accordion);
+  });
+}
+
+function setAccordionState(accordion, isOpen, animate = true) {
+  const panel = accordion._panel;
+  const panelInner = accordion._panelInner;
+  const button = accordion._button;
+
+  if (!panel || !panelInner || !button) {
+    return;
+  }
+
+  accordion.dataset.open = isOpen ? "true" : "false";
+  button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+  if (!mobileAccordionMedia.matches) {
+    panel.hidden = false;
+    panel.style.height = "auto";
+    panel.style.opacity = "1";
+    return;
+  }
+
+  if (!animate) {
+    panel.hidden = !isOpen;
+    panel.style.height = isOpen ? "auto" : "0px";
+    panel.style.opacity = isOpen ? "1" : "0";
+    return;
+  }
+
+  if (isOpen) {
+    panel.hidden = false;
+    panel.style.height = "0px";
+    panel.style.opacity = "0";
+
+    window.requestAnimationFrame(() => {
+      panel.style.height = `${panelInner.scrollHeight}px`;
+      panel.style.opacity = "1";
+    });
+
+    return;
+  }
+
+  const currentHeight = panelInner.scrollHeight;
+
+  panel.hidden = false;
+  panel.style.height = `${currentHeight}px`;
+  panel.style.opacity = "1";
+
+  window.requestAnimationFrame(() => {
+    panel.style.height = "0px";
+    panel.style.opacity = "0";
   });
 }
 
@@ -326,15 +411,14 @@ function syncMobileAccordions() {
 
   if (mobileAccordionMedia.matches) {
     mobileAccordions.forEach((accordion, index) => {
-      if (!accordion.dataset.userTouched) {
-        accordion.open = index === 0;
-      }
+      const shouldOpen = accordion.dataset.userTouched ? accordion.dataset.open === "true" : index === 0;
+      setAccordionState(accordion, shouldOpen, false);
     });
     return;
   }
 
   mobileAccordions.forEach((accordion) => {
-    accordion.open = true;
+    setAccordionState(accordion, true, false);
   });
 }
 
@@ -343,14 +427,17 @@ function openAccordionForTarget(target) {
     return;
   }
 
-  const accordion = target.querySelector?.(".mobile-accordion") || target.closest?.(".mobile-accordion");
+  const accordion =
+    target.querySelector?.(".mobile-accordion") ||
+    target.closest?.(".mobile-accordion") ||
+    target.closest?.("section")?.querySelector(".mobile-accordion");
 
   if (!accordion) {
     return;
   }
 
   mobileAccordions.forEach((item) => {
-    item.open = item === accordion;
+    setAccordionState(item, item === accordion, false);
   });
 }
 
@@ -358,21 +445,14 @@ buildMobileAccordions();
 syncMobileAccordions();
 
 mobileAccordions.forEach((accordion) => {
-  accordion.addEventListener("toggle", () => {
-    if (!mobileAccordionMedia.matches) {
-      return;
-    }
+  accordion._button?.addEventListener("click", () => {
+    const shouldOpen = accordion.dataset.open !== "true";
 
     accordion.dataset.userTouched = "true";
 
-    if (!accordion.open) {
-      return;
-    }
-
     mobileAccordions.forEach((item) => {
-      if (item !== accordion) {
-        item.open = false;
-      }
+      item.dataset.userTouched = "true";
+      setAccordionState(item, shouldOpen && item === accordion);
     });
   });
 });

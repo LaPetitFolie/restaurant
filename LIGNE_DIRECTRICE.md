@@ -104,6 +104,7 @@ Une decision est bonne si elle :
 - La zone des formules du midi doit se lire comme une information de menu, jamais comme un selecteur ou un achat en ligne.
 - La premiere vue doit rester immediate a comprendre : une promesse courte, un seul axe principal, et aucune surcharge de texte.
 - Sur mobile, la reduction de longueur de page prime tant que le contenu reste accessible, indexable et integralement visible sur desktop.
+- Les cartes mobiles doivent garder une presentation homogène, creme et editorialisee, sans bandes de section visibles ni animations qui parasitent la lecture.
 
 Rappel important :
 

@@ -139,6 +139,7 @@ Le site est une base statique propre, sans framework, composee de :
 - Bloc des formules du midi retravaille pour supprimer la fausse affordance de bouton et adopter une lecture de type ardoise.
 - Hero allegée pour clarifier la premiere vue : message raccourci, CTA principal recentre sur la reservation et densite visuelle reduite.
 - Les longues sections sont maintenant repliees sur mobile via des accordéons natifs injectes au chargement, sans modifier le rendu desktop.
+- Le systeme d'accordeons mobile a ete re-travaille pour supprimer les vides de layout, unifier les cartes et remplacer le comportement natif saccade par une animation JS/CSS plus stable.
 
 Rapport de reference :
 
