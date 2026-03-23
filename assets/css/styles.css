@@ -2145,23 +2145,34 @@ footer {
 }
 
 @media (max-width: 768px) {
+  #restaurant,
+  .experience-section,
+  #carte,
+  .kitchen-section,
+  #galerie,
+  #reservation,
+  #contact {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+  }
+
   .desktop-section-head {
     display: none;
   }
 
   .mobile-accordion {
-    margin-top: 0.35rem;
+    margin-top: 0;
   }
 
   .mobile-accordion-summary {
     position: relative;
     display: grid;
-    gap: 0.35rem;
-    padding: 1rem 3.6rem 1rem 1rem;
-    border-radius: 18px;
+    gap: 0.45rem;
+    padding: 1.2rem 4.1rem 1.2rem 1.25rem;
+    border-radius: 24px;
     background: rgba(247, 241, 233, 0.96);
     border: 1px solid rgba(18, 37, 72, 0.1);
-    box-shadow: 0 12px 24px rgba(18, 37, 72, 0.07);
+    box-shadow: 0 10px 24px rgba(18, 37, 72, 0.06);
     list-style: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -2188,16 +2199,16 @@ footer {
     display: block;
     color: var(--bleu-baie);
     font-family: var(--font-display);
-    font-size: 1.55rem;
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
     font-weight: 700;
-    line-height: 1.08;
+    line-height: 1.02;
   }
 
   .mobile-accordion-subtitle {
     display: block;
     color: rgba(18, 37, 72, 0.72);
-    font-size: 0.93rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .mobile-accordion-kicker {
@@ -2215,6 +2226,26 @@ footer {
 
   .mobile-accordion:not([open]) .mobile-accordion-panel {
     display: none;
+  }
+
+  #restaurant .section-inner,
+  .experience-section .section-inner,
+  #carte .section-inner,
+  .kitchen-section .section-inner,
+  #galerie .section-inner,
+  #reservation .section-inner,
+  #contact .section-inner {
+    max-width: 100%;
+  }
+
+  #restaurant,
+  .experience-section,
+  #carte,
+  .kitchen-section,
+  #galerie,
+  #reservation,
+  #contact {
+    padding: 0 1.15rem 1rem;
   }
 
   .mobile-accordion .section-offset-md,
