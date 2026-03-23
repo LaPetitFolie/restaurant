@@ -218,9 +218,9 @@ header.scrolled nav a {
   color: var(--ardoise);
 }
 
-.btn-reserve-nav {
+header nav .btn-reserve-nav {
   background: var(--rose-signature);
-  color: #fff !important;
+  color: #fff;
   padding: 0.58rem 1.2rem;
   border-radius: 4px;
   font-size: 0.78rem;
@@ -711,18 +711,18 @@ section {
   text-transform: uppercase;
 }
 
-.value-pitch-claim {
+.resto-text .value-pitch-claim {
   margin-top: 1rem;
-  color: var(--ardoise) !important;
+  color: var(--ardoise);
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2vw, 1.65rem) !important;
-  line-height: 1.28 !important;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.28;
 }
 
-.value-pitch-proof {
+.resto-text .value-pitch-proof {
   margin-top: 0.75rem;
-  color: var(--bleu-baie) !important;
-  font-size: 0.88rem !important;
+  color: var(--bleu-baie);
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -948,13 +948,12 @@ section {
   font-size: 0.95rem;
 }
 
-.highlight-note {
+.menu-highlight .highlight-note {
   margin-top: 1.6rem;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--blanc-ecume) !important;
-  color: rgba(255, 255, 255, 0.78) !important;
-  font-size: 0.9rem !important;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
   letter-spacing: 0.01em;
 }
 
@@ -2084,6 +2083,155 @@ footer {
   color: var(--granit);
 }
 
+@media (max-width: 1024px) and (min-width: 901px) {
+  header,
+  header.scrolled {
+    padding-inline: 1.35rem;
+  }
+
+  nav {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+
+  .section-inner,
+  .footer-inner,
+  .footer-bottom {
+    max-width: 960px;
+  }
+
+  section {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .hero {
+    min-height: 580px;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
+
+  .hero-sub {
+    max-width: 560px;
+  }
+
+  .hero-highlights {
+    gap: 0.65rem;
+  }
+
+  .resto-grid,
+  .experience-layout,
+  .contact-grid {
+    gap: 2rem;
+  }
+
+  .editorial-title {
+    font-size: clamp(2.3rem, 5vw, 3rem);
+    max-width: 11ch;
+  }
+
+  .experience-collage {
+    gap: 0.85rem;
+  }
+
+  .menu-layout,
+  .kitchen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .formula-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .formula-grid::before {
+    display: none;
+  }
+
+  .formula-card,
+  .formula-card:last-child {
+    padding: 0;
+  }
+
+  .formula-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .formula-card:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .formula-label {
+    margin-bottom: 0;
+  }
+
+  .formula-price-badge {
+    position: static;
+    margin-left: auto;
+    align-self: center;
+  }
+
+  .formula-card strong,
+  .formula-card p {
+    width: 100%;
+  }
+
+  .menu-panel {
+    padding: 1.2rem 1.25rem;
+  }
+
+  .signature-cards {
+    gap: 1rem;
+  }
+
+  .signature-card {
+    padding: 1.3rem;
+  }
+
+  .galerie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reservation-layout {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 1.5rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .horaires-grid,
+  .contact-grid {
+    max-width: 100%;
+  }
+
+  .contact-docs {
+    grid-template-columns: 1fr;
+  }
+
+  .map-card {
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+}
+
 @media (max-width: 900px) {
   nav {
     display: none;
@@ -2197,7 +2345,7 @@ footer {
   #galerie,
   #reservation,
   #contact {
-    background: transparent !important;
+    background: transparent;
     color: var(--granit);
     content-visibility: visible;
     contain-intrinsic-size: auto;
@@ -2317,10 +2465,10 @@ footer {
 
   .mobile-accordion .reveal,
   .mobile-accordion .reveal.visible {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    animation: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
   }
 
   .mobile-accordion .section-offset-md,
@@ -2329,10 +2477,10 @@ footer {
   }
 
   .mobile-accordion .menu-panel {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .mobile-accordion .contact-grid,
@@ -2357,10 +2505,10 @@ footer {
   #carte .menu-express-banner,
   #carte .signature-card,
   #carte .signature-card-featured {
-    background: #fff !important;
-    border: 1px solid var(--mobile-border) !important;
-    box-shadow: none !important;
-    color: var(--mobile-text) !important;
+    background: #fff;
+    border: 1px solid var(--mobile-border);
+    box-shadow: none;
+    color: var(--mobile-text);
   }
 
   #carte .menu-highlight {
@@ -2376,7 +2524,7 @@ footer {
   #carte .signature-card strong,
   #carte .formula-card strong,
   #carte .signature-price-group strong {
-    color: var(--mobile-title) !important;
+    color: var(--mobile-title);
   }
 
   #carte .menu-highlight p,
@@ -2388,8 +2536,8 @@ footer {
   #carte .menu-item-desc,
   #carte .signature-heading p,
   #carte .signature-price-group span {
-    color: var(--mobile-text) !important;
-    opacity: 1 !important;
+    color: var(--mobile-text);
+    opacity: 1;
   }
 
   #carte .highlight-note {
@@ -2421,7 +2569,7 @@ footer {
 
   #carte .formula-label,
   #carte .signature-label {
-    color: var(--mobile-muted) !important;
+    color: var(--mobile-muted);
   }
 
   #carte .formula-label {
@@ -2464,14 +2612,14 @@ footer {
   #carte .signature-rates strong,
   #carte .practical-item strong,
   #carte .practical-item a {
-    color: var(--mobile-text) !important;
+    color: var(--mobile-text);
   }
 
   #carte .formula-price-badge,
   #carte .menu-express-label {
-    background: var(--mobile-soft-rose) !important;
-    color: var(--mobile-rose) !important;
-    border: 1px solid rgba(180, 35, 107, 0.16) !important;
+    background: var(--mobile-soft-rose);
+    color: var(--mobile-rose);
+    border: 1px solid rgba(180, 35, 107, 0.16);
   }
 
   #carte .signature-rates div {
@@ -2518,14 +2666,14 @@ footer {
   #contact .horaires-card,
   #contact .contact-panel,
   #contact .contact-item {
-    background: #fff !important;
-    color: var(--mobile-text) !important;
+    background: #fff;
+    color: var(--mobile-text);
     border: 1px solid var(--mobile-border);
     box-shadow: none;
   }
 
   #carte .signature-quality-list span {
-    color: var(--mobile-text) !important;
+    color: var(--mobile-text);
   }
 
   #contact .contact-item {
@@ -2546,7 +2694,7 @@ footer {
   #contact .info-badge,
   #contact .practical-item strong,
   #contact .practical-item a {
-    color: var(--mobile-text) !important;
+    color: var(--mobile-text);
     opacity: 1;
   }
 

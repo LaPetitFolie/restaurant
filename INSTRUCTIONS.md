@@ -144,6 +144,9 @@ Le site est une base statique propre, sans framework, composee de :
 - Sur mobile, les medias ouverts dans un accordéon doivent arriver avec un chargement doux : placeholder discret, fondu court, et aucune apparition brutale d'image ou d'iframe.
 - Le plan d'acces mobile doit rester leger : activation explicite de la carte interactive, jamais de gros bloc Google Maps charge d'emblee dans le flux.
 - Les medias HTML principaux doivent servir un format moderne quand possible : `<picture>` avec `webp` en source et JPG en fallback, sans casser les dimensions ni le rendu.
+- Un palier tablette explicite doit amortir la transition entre desktop et mobile, au lieu de laisser tout basculer brutalement au seul breakpoint `900px`.
+- La dette de specificite CSS doit rester sous controle : les `!important` ne sont acceptes que pour `prefers-reduced-motion` ou un vrai cas d'override impossible autrement.
+- Verification visuelle locale a refaire au minimum en mobile et en `1024px` apres chaque gros changement de layout.
 
 Rapport de reference :
 

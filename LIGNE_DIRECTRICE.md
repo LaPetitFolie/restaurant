@@ -109,6 +109,8 @@ Une decision est bonne si elle :
 - Les elements a forte charge visuelle sur mobile (photos, carte d'acces, badges prix) doivent etre integres avec retenue et clarte, jamais comme des surgissements techniques ou des stickers parasites.
 - Sur smartphone, la carte d'acces doit se comporter comme un service declenchable, pas comme un embed imposé : l'utilisateur choisit d'ouvrir l'interactif quand il en a besoin.
 - Les optimisations techniques visibles par l'utilisateur doivent rester transparentes : meilleures images, meme identite, meme cadrage, aucune impression de degradation.
+- Entre smartphone et desktop, le site doit garder une marche intermediaire lisible : header moins tendu, grilles moins denses, lecture plus calme autour de `1024px`.
+- Une bonne maintenance CSS signifie aussi une cascade propre : moins d'overrides brutaux, moins de `!important`, plus de selecteurs explicites qui racontent l'intention.
 
 Rappel important :
 
