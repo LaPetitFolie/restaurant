@@ -112,6 +112,7 @@ Une decision est bonne si elle :
 - Entre smartphone et desktop, le site doit garder une marche intermediaire lisible : header moins tendu, grilles moins denses, lecture plus calme autour de `1024px`.
 - Une bonne maintenance CSS signifie aussi une cascade propre : moins d'overrides brutaux, moins de `!important`, plus de selecteurs explicites qui racontent l'intention.
 - La maintenance du JS doit rester invisible pour le client final : documentation plus claire, aucune regression comportementale, et aucun changement de rendu sans intention produit.
+- Les clarifications techniques doivent aller vers plus de lisibilite interne : constantes de selecteurs, etats explicites, typage JSDoc leger, sans transformer le site en chantier abstrait.
 
 Rappel important :
 

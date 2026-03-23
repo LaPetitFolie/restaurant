@@ -149,6 +149,7 @@ Le site est une base statique propre, sans framework, composee de :
 - Verification visuelle locale a refaire au minimum en mobile et en `1024px` apres chaque gros changement de layout.
 - `assets/js/main.js` doit rester documente sur ses flux principaux : navigation mobile, accordÃ©ons, media differe, tabs et formulaire.
 - Les nettoyages JS sans effet visuel doivent privilegier JSDoc, noms explicites et commentaires d'intention avant toute refactorisation structurelle.
+- Quand un selecteur, un etat ARIA ou une chaine de comportement revient plusieurs fois dans `main.js`, l'extraire en constante locale plutot que le dupliquer.
 
 Rapport de reference :
 

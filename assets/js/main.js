@@ -1,11 +1,25 @@
+const ARIA_TRUE = "true";
+const ARIA_FALSE = "false";
+const REVEAL_SELECTOR = ".reveal";
+const HASH_LINK_SELECTOR = 'a[href^="#"]';
+const MOBILE_CLOSE_SELECTOR = "[data-mobile-close='true']";
+const MOBILE_NAV_FOCUSABLE_SELECTOR = "a, button, input, select, textarea, [tabindex]:not([tabindex='-1'])";
+const MENU_TAB_SELECTOR = "[data-menu-tab]";
+const MENU_PANEL_SELECTOR = "[data-menu-panel]";
+const ACCORDION_SELECTOR = ".mobile-accordion";
+const ACCORDION_PANEL_SELECTOR = ".mobile-accordion-panel";
+const ACCORDION_PANEL_INNER_SELECTOR = ".mobile-accordion-panel-inner";
+const MAP_FRAME_SELECTOR = ".map-frame";
+const MEDIA_IMAGE_SELECTOR = ".kitchen-visual img, .experience-photo img, .galerie-item img, .contact-doc-card img";
+const MEDIA_SHELL_SELECTOR = ".kitchen-visual, .experience-photo, .galerie-item, .contact-doc-card";
 const header = document.getElementById("header");
 const heroBg = document.getElementById("heroBg");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const reveals = document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(REVEAL_SELECTOR);
 const hamburger = document.getElementById("hamburgerBtn");
 const mobileNav = document.getElementById("mobileNav");
 const overlay = document.querySelector(".mobile-overlay");
-const mobileCloseTriggers = document.querySelectorAll("[data-mobile-close='true']");
+const mobileCloseTriggers = document.querySelectorAll(MOBILE_CLOSE_SELECTOR);
 
 /**
  * Stores the last focused element before the mobile navigation opens so focus
@@ -14,6 +28,16 @@ const mobileCloseTriggers = document.querySelectorAll("[data-mobile-close='true'
  * @type {HTMLElement | null}
  */
 let lastFocusedElement = null;
+
+/**
+ * Converts a boolean into the ARIA string value expected by `setAttribute`.
+ *
+ * @param {boolean} value
+ * @returns {"true" | "false"}
+ */
+function toAriaBoolean(value) {
+  return value ? ARIA_TRUE : ARIA_FALSE;
+}
 
 /**
  * Immediately marks a target and its nested reveal items as visible.
@@ -29,7 +53,7 @@ function revealElementTree(target) {
     target.classList.add("visible");
   }
 
-  target.querySelectorAll(".reveal").forEach((element) => {
+  target.querySelectorAll(REVEAL_SELECTOR).forEach((element) => {
     element.classList.add("visible");
   });
 }
@@ -69,8 +93,8 @@ function setMobileNavState(isOpen) {
   hamburger.classList.toggle("active", isOpen);
   overlay.classList.toggle("open", isOpen);
   document.body.classList.toggle("nav-open", isOpen);
-  hamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  mobileNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
+  hamburger.setAttribute("aria-expanded", toAriaBoolean(isOpen));
+  mobileNav.setAttribute("aria-hidden", toAriaBoolean(!isOpen));
 }
 
 /**
@@ -84,7 +108,7 @@ function getMobileFocusableElements() {
   }
 
   return Array.from(
-    mobileNav.querySelectorAll("a, button, input, select, textarea, [tabindex]:not([tabindex='-1'])")
+    mobileNav.querySelectorAll(MOBILE_NAV_FOCUSABLE_SELECTOR)
   ).filter((element) => !element.hasAttribute("disabled"));
 }
 
@@ -169,7 +193,7 @@ if ("IntersectionObserver" in window) {
   reveals.forEach((element) => element.classList.add("visible"));
 }
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
+document.querySelectorAll(HASH_LINK_SELECTOR).forEach((link) => {
   link.addEventListener("click", () => {
     const target = link.getAttribute("href");
 
@@ -244,22 +268,35 @@ window.addEventListener("load", () => {
 
 const reservationForm = document.getElementById("reservationForm");
 const reservationStatus = document.getElementById("reservationStatus");
-const menuTabs = Array.from(document.querySelectorAll("[data-menu-tab]"));
-const menuPanels = Array.from(document.querySelectorAll("[data-menu-panel]"));
+const menuTabs = Array.from(document.querySelectorAll(MENU_TAB_SELECTOR));
+const menuPanels = Array.from(document.querySelectorAll(MENU_PANEL_SELECTOR));
 
 /**
  * Describes how each desktop section should be repackaged as a mobile
  * accordion without duplicating the source markup.
  *
- * @type {Array<{
- *   section: string,
- *   title: string,
- *   subtitle: string,
- *   panelSelectors: string[],
- *   kicker?: string,
- *   hasDesktopHeading?: boolean,
- *   dark?: boolean
- * }>}
+ * @typedef {Object} MobileAccordionConfig
+ * @property {string} section
+ * @property {string} title
+ * @property {string} subtitle
+ * @property {string[]} panelSelectors
+ * @property {string=} kicker
+ * @property {boolean=} hasDesktopHeading
+ */
+
+/**
+ * Runtime shape attached to an accordion wrapper once it is built.
+ *
+ * @typedef {HTMLElement & {
+ *   _panel?: HTMLElement,
+ *   _panelInner?: HTMLElement,
+ *   _button?: HTMLButtonElement,
+ *   dataset: DOMStringMap
+ * }} MobileAccordionShell
+ */
+
+/**
+ * @type {MobileAccordionConfig[]}
  */
 const mobileAccordionSections = [
   {
@@ -275,7 +312,6 @@ const mobileAccordionSections = [
     subtitle: "Une cuisine sincere, une vue imprenable et une atmosphere iodee qui s'adapte au rythme de chacun.",
     kicker: "L'ambiance",
     panelSelectors: [".experience-layout"],
-    dark: true,
   },
   {
     section: "#carte",
@@ -283,7 +319,6 @@ const mobileAccordionSections = [
     subtitle: "Formules, menu du midi et selections de saison dans une lecture plus legere sur smartphone.",
     panelSelectors: [".menu-highlight", ".menu-tabs-shell", ".signature-section", ".carte-note"],
     hasDesktopHeading: true,
-    dark: true,
   },
   {
     section: ".kitchen-section",
@@ -315,6 +350,7 @@ const mobileAccordionSections = [
     hasDesktopHeading: true,
   },
 ];
+/** @type {MobileAccordionShell[]} */
 const mobileAccordions = [];
 const mobileAccordionMedia = window.matchMedia("(max-width: 768px)");
 const mediaPreloadCache = new Set();
@@ -345,12 +381,12 @@ function buildMobileAccordions() {
     const accordion = document.createElement("article");
     accordion.className = "mobile-accordion";
     accordion.setAttribute("data-accordion", "");
-    accordion.dataset.open = "false";
+    accordion.dataset.open = ARIA_FALSE;
 
     const summary = document.createElement("button");
     summary.type = "button";
     summary.className = "mobile-accordion-summary";
-    summary.setAttribute("aria-expanded", "false");
+    summary.setAttribute("aria-expanded", ARIA_FALSE);
 
     if (config.kicker) {
       const kicker = document.createElement("span");
@@ -390,7 +426,7 @@ function buildMobileAccordions() {
         return;
       }
 
-      if (accordion.dataset.open === "true") {
+      if (accordion.dataset.open === ARIA_TRUE) {
         panel.hidden = false;
         panel.style.height = "auto";
         panel.style.opacity = "1";
@@ -414,7 +450,7 @@ function buildMobileAccordions() {
  * Preloads the first images from an accordion just before it opens, which
  * reduces the perceived delay in long mobile sections.
  *
- * @param {Element & { _panelInner?: HTMLElement }} accordion
+ * @param {MobileAccordionShell} accordion
  */
 function primeAccordionMedia(accordion) {
   const panelInner = accordion?._panelInner;
@@ -445,12 +481,7 @@ function primeAccordionMedia(accordion) {
  * Synchronizes an accordion visual state, including ARIA, height animation and
  * lazy media priming when a panel is opened.
  *
- * @param {Element & {
- *   _panel?: HTMLElement,
- *   _panelInner?: HTMLElement,
- *   _button?: HTMLButtonElement,
- *   dataset: DOMStringMap
- * }} accordion
+ * @param {MobileAccordionShell} accordion
  * @param {boolean} isOpen
  * @param {boolean} [animate=true]
  */
@@ -463,8 +494,8 @@ function setAccordionState(accordion, isOpen, animate = true) {
     return;
   }
 
-  accordion.dataset.open = isOpen ? "true" : "false";
-  button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  accordion.dataset.open = toAriaBoolean(isOpen);
+  button.setAttribute("aria-expanded", toAriaBoolean(isOpen));
 
   if (!mobileAccordionMedia.matches) {
     panel.hidden = false;
@@ -520,7 +551,7 @@ function syncMobileAccordions() {
 
   if (mobileAccordionMedia.matches) {
     mobileAccordions.forEach((accordion, index) => {
-      const shouldOpen = accordion.dataset.userTouched ? accordion.dataset.open === "true" : index === 0;
+      const shouldOpen = accordion.dataset.userTouched ? accordion.dataset.open === ARIA_TRUE : index === 0;
       setAccordionState(accordion, shouldOpen, false);
     });
     return;
@@ -543,9 +574,9 @@ function openAccordionForTarget(target) {
   }
 
   const accordion =
-    target.querySelector?.(".mobile-accordion") ||
-    target.closest?.(".mobile-accordion") ||
-    target.closest?.("section")?.querySelector(".mobile-accordion");
+    target.querySelector?.(ACCORDION_SELECTOR) ||
+    target.closest?.(ACCORDION_SELECTOR) ||
+    target.closest?.("section")?.querySelector(ACCORDION_SELECTOR);
 
   if (!accordion) {
     return;
@@ -563,8 +594,8 @@ function openAccordionForTarget(target) {
  * @param {Element} node
  */
 function refreshAccordionHeightForNode(node) {
-  const panel = node.closest?.(".mobile-accordion-panel");
-  const inner = panel?.querySelector(".mobile-accordion-panel-inner");
+  const panel = node.closest?.(ACCORDION_PANEL_SELECTOR);
+  const inner = panel?.querySelector(ACCORDION_PANEL_INNER_SELECTOR);
 
   if (!panel || !inner || panel.hidden || panel.style.height === "auto") {
     return;
@@ -578,10 +609,8 @@ function refreshAccordionHeightForNode(node) {
  * mobile accordions do not jump when content finishes loading.
  */
 function enhanceDeferredMedia() {
-  const mediaSelector = ".kitchen-visual img, .experience-photo img, .galerie-item img, .contact-doc-card img";
-
-  document.querySelectorAll(mediaSelector).forEach((image) => {
-    const shell = image.closest(".kitchen-visual, .experience-photo, .galerie-item, .contact-doc-card");
+  document.querySelectorAll(MEDIA_IMAGE_SELECTOR).forEach((image) => {
+    const shell = image.closest(MEDIA_SHELL_SELECTOR);
 
     if (!shell) {
       return;
@@ -604,7 +633,7 @@ function enhanceDeferredMedia() {
     image.addEventListener("load", markLoaded, { once: true });
   });
 
-  document.querySelectorAll(".map-frame").forEach((frame) => {
+  document.querySelectorAll(MAP_FRAME_SELECTOR).forEach((frame) => {
     const iframe = frame.querySelector("iframe");
     const button = frame.querySelector(".map-activate");
 
@@ -615,11 +644,11 @@ function enhanceDeferredMedia() {
     const loadMap = () => {
       const source = iframe.dataset.mapSrc;
 
-      if (!source || frame.dataset.mapLoaded === "true") {
+      if (!source || frame.dataset.mapLoaded === ARIA_TRUE) {
         return;
       }
 
-      frame.dataset.mapLoaded = "true";
+      frame.dataset.mapLoaded = ARIA_TRUE;
       frame.classList.add("media-pending");
       frame.setAttribute("aria-busy", "true");
       iframe.setAttribute("src", source);
@@ -651,7 +680,7 @@ enhanceDeferredMedia();
 // not exist in the original desktop DOM.
 mobileAccordions.forEach((accordion) => {
   accordion._button?.addEventListener("click", () => {
-    const shouldOpen = accordion.dataset.open !== "true";
+    const shouldOpen = accordion.dataset.open !== ARIA_TRUE;
 
     accordion.dataset.userTouched = "true";
 
@@ -668,8 +697,8 @@ mobileAccordionMedia.addEventListener("change", () => {
   syncMobileAccordions();
 
   if (!mobileAccordionMedia.matches) {
-    document.querySelectorAll(".map-frame").forEach((frame) => {
-      if (frame.dataset.mapLoaded === "true") {
+    document.querySelectorAll(MAP_FRAME_SELECTOR).forEach((frame) => {
+      if (frame.dataset.mapLoaded === ARIA_TRUE) {
         return;
       }
 
@@ -680,7 +709,7 @@ mobileAccordionMedia.addEventListener("change", () => {
         return;
       }
 
-      frame.dataset.mapLoaded = "true";
+      frame.dataset.mapLoaded = ARIA_TRUE;
       iframe.setAttribute("src", source);
       frame.classList.add("media-pending");
       frame.setAttribute("aria-busy", "true");
@@ -701,7 +730,7 @@ function activateMenuTab(targetKey) {
   menuTabs.forEach((tab) => {
     const isActive = tab.dataset.menuTab === targetKey;
     tab.classList.toggle("is-active", isActive);
-    tab.setAttribute("aria-selected", isActive ? "true" : "false");
+    tab.setAttribute("aria-selected", toAriaBoolean(isActive));
     tab.tabIndex = isActive ? 0 : -1;
   });
 
