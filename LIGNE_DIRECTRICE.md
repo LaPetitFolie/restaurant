@@ -106,6 +106,7 @@ Une decision est bonne si elle :
 - Sur mobile, la reduction de longueur de page prime tant que le contenu reste accessible, indexable et integralement visible sur desktop.
 - Les cartes mobiles doivent garder une presentation homogène, creme et editorialisee, sans bandes de section visibles ni animations qui parasitent la lecture.
 - Les panneaux ouverts sur mobile doivent conserver une lisibilite immediate : texte fonce, sous-cartes claires et contrastes coherents avec la carte blanche de reference.
+- Les elements a forte charge visuelle sur mobile (photos, carte d'acces, badges prix) doivent etre integres avec retenue et clarte, jamais comme des surgissements techniques ou des stickers parasites.
 
 Rappel important :
 

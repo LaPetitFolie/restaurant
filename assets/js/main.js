@@ -259,7 +259,7 @@ const mobileAccordionSections = [
     section: "#contact",
     title: "Informations pratiques",
     subtitle: "Adresse, telephone, horaires et acces rapide sans obliger a tout faire defiler sur mobile.",
-    panelSelectors: [".horaires-grid", ".contact-grid"],
+    panelSelectors: [".horaires-grid", ".map-card"],
     hasDesktopHeading: true,
   },
 ];
@@ -441,8 +441,70 @@ function openAccordionForTarget(target) {
   });
 }
 
+function refreshAccordionHeightForNode(node) {
+  const panel = node.closest?.(".mobile-accordion-panel");
+  const inner = panel?.querySelector(".mobile-accordion-panel-inner");
+
+  if (!panel || !inner || panel.hidden || panel.style.height === "auto") {
+    return;
+  }
+
+  panel.style.height = `${inner.scrollHeight}px`;
+}
+
+function enhanceDeferredMedia() {
+  const mediaSelector = ".kitchen-visual img, .experience-photo img, .galerie-item img, .contact-doc-card img";
+
+  document.querySelectorAll(mediaSelector).forEach((image) => {
+    const shell = image.closest(".kitchen-visual, .experience-photo, .galerie-item, .contact-doc-card");
+
+    if (!shell) {
+      return;
+    }
+
+    const markLoaded = () => {
+      shell.classList.remove("media-pending");
+      shell.classList.add("media-loaded");
+      shell.setAttribute("aria-busy", "false");
+      refreshAccordionHeightForNode(shell);
+    };
+
+    if (image.complete) {
+      markLoaded();
+      return;
+    }
+
+    shell.classList.add("media-pending");
+    shell.setAttribute("aria-busy", "true");
+    image.addEventListener("load", markLoaded, { once: true });
+  });
+
+  document.querySelectorAll(".map-frame").forEach((frame) => {
+    const iframe = frame.querySelector("iframe");
+
+    if (!iframe) {
+      return;
+    }
+
+    frame.classList.add("media-pending");
+    frame.setAttribute("aria-busy", "true");
+
+    iframe.addEventListener(
+      "load",
+      () => {
+        frame.classList.remove("media-pending");
+        frame.classList.add("media-loaded");
+        frame.setAttribute("aria-busy", "false");
+        refreshAccordionHeightForNode(frame);
+      },
+      { once: true }
+    );
+  });
+}
+
 buildMobileAccordions();
 syncMobileAccordions();
+enhanceDeferredMedia();
 
 mobileAccordions.forEach((accordion) => {
   accordion._button?.addEventListener("click", () => {

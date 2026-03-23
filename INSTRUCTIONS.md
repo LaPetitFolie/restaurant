@@ -141,6 +141,7 @@ Le site est une base statique propre, sans framework, composee de :
 - Les longues sections sont maintenant repliees sur mobile via des accordéons natifs injectes au chargement, sans modifier le rendu desktop.
 - Le systeme d'accordeons mobile a ete re-travaille pour supprimer les vides de layout, unifier les cartes et remplacer le comportement natif saccade par une animation JS/CSS plus stable.
 - Les contenus internes de `La carte` et des informations pratiques doivent rester lisibles sur mobile en fond clair : pas de texte blanc herite des sections desktop, pas de sous-cartes sombres residuelles.
+- Sur mobile, les medias ouverts dans un accordéon doivent arriver avec un chargement doux : placeholder discret, fondu court, et aucune apparition brutale d'image ou d'iframe.
 
 Rapport de reference :
 

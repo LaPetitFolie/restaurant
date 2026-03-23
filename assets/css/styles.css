@@ -2252,10 +2252,11 @@ footer {
   }
 
   .mobile-accordion-panel {
-    overflow: hidden;
+    overflow: clip;
     height: 0;
     opacity: 0;
     transition: height 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
+    will-change: height, opacity;
   }
 
   .mobile-accordion[data-open="true"] .mobile-accordion-panel {
@@ -2311,7 +2312,6 @@ footer {
   }
 
   .mobile-accordion .contact-grid,
-  .mobile-accordion .map-card,
   .mobile-accordion .contact-docs {
     display: none;
   }
@@ -2382,6 +2382,10 @@ footer {
   }
 
   #carte .formula-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.45rem 0.75rem;
+    align-items: start;
     padding: 1rem 0 0;
     border-top: 1px solid rgba(18, 37, 72, 0.08);
   }
@@ -2394,6 +2398,27 @@ footer {
   #carte .formula-label,
   #carte .signature-label {
     color: var(--mobile-muted) !important;
+  }
+
+  #carte .formula-label {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0.25rem 0 0;
+  }
+
+  #carte .formula-price-badge {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: start;
+    min-width: 84px;
+    padding: 0.42rem 0.8rem;
+  }
+
+  #carte .formula-card strong,
+  #carte .formula-card p {
+    grid-column: 1 / -1;
   }
 
   #carte .menu-item {
@@ -2452,10 +2477,10 @@ footer {
   }
 
   #carte .menu-tab.is-active {
-    background: var(--rose-signature);
+    background: var(--mobile-rose);
     color: #fff;
     border-color: transparent;
-    box-shadow: 0 10px 20px rgba(239, 46, 171, 0.18);
+    box-shadow: 0 10px 18px rgba(180, 35, 107, 0.18);
   }
 
   #carte .signature-quality-list span,
@@ -2499,6 +2524,37 @@ footer {
     color: var(--mobile-title);
   }
 
+  #contact .map-card {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid var(--mobile-border);
+    box-shadow: none;
+  }
+
+  #contact .map-copy h3 {
+    color: var(--mobile-title);
+    font-size: clamp(1.75rem, 8vw, 2.3rem);
+    margin-bottom: 0.55rem;
+  }
+
+  #contact .map-copy p,
+  #contact .map-copy .section-tag {
+    color: var(--mobile-text);
+    opacity: 1;
+  }
+
+  #contact .map-frame {
+    min-height: 260px;
+    background: #f3eee7;
+  }
+
+  #contact .map-frame iframe {
+    min-height: 260px;
+  }
+
   #contact .contact-icon,
   #contact .social-link {
     background: rgba(29, 87, 183, 0.08);
@@ -2512,6 +2568,74 @@ footer {
   #contact .info-badge {
     background: var(--mobile-soft-rose);
     color: var(--mobile-rose);
+  }
+
+  .kitchen-visual,
+  .experience-photo,
+  .galerie-item,
+  .contact-doc-card,
+  .map-frame {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #f3eee7;
+  }
+
+  .kitchen-visual.media-pending::before,
+  .experience-photo.media-pending::before,
+  .galerie-item.media-pending::before,
+  .contact-doc-card.media-pending::before,
+  .map-frame.media-pending::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, #f3eee7 0%, #fbf8f2 50%, #f3eee7 100%);
+    background-size: 200% 100%;
+    animation: mediaShimmer 1.2s linear infinite;
+    transition: opacity 180ms ease;
+    pointer-events: none;
+  }
+
+  .kitchen-visual img,
+  .experience-photo img,
+  .galerie-item img,
+  .contact-doc-card img,
+  .map-frame iframe {
+    position: relative;
+    z-index: 2;
+    transition: opacity 220ms ease;
+  }
+
+  .kitchen-visual.media-pending img,
+  .experience-photo.media-pending img,
+  .galerie-item.media-pending img,
+  .contact-doc-card.media-pending img,
+  .map-frame.media-pending iframe {
+    opacity: 0;
+  }
+
+  .experience-photo figcaption,
+  .galerie-item figcaption,
+  .contact-doc-card figcaption {
+    position: relative;
+    z-index: 3;
+  }
+
+  .kitchen-visual.media-loaded::before,
+  .experience-photo.media-loaded::before,
+  .galerie-item.media-loaded::before,
+  .contact-doc-card.media-loaded::before,
+  .map-frame.media-loaded::before {
+    opacity: 0;
+  }
+
+  .kitchen-visual.media-loaded img,
+  .experience-photo.media-loaded img,
+  .galerie-item.media-loaded img,
+  .contact-doc-card.media-loaded img,
+  .map-frame.media-loaded iframe {
+    opacity: 1;
   }
 
   header {
@@ -2593,6 +2717,16 @@ footer {
   .legal-list div {
     grid-template-columns: 1fr;
     gap: 0.35rem;
+  }
+}
+
+@keyframes mediaShimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
   }
 }
 
