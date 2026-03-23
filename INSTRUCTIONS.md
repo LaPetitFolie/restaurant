@@ -31,7 +31,7 @@ Le site est une base statique propre, sans framework, composee de :
 
 - hero avec vraie photo locale
 - navigation desktop + menu mobile
-- sections : `Accueil`, `Le restaurant`, `La carte`, `Galerie`, `Reservation`, `Contact`
+- sections : `Accueil`, `Le restaurant`, `La carte`, `Galerie`, `Contact`
 - page `mentions-legales.html`
 - page `404.html`
 
@@ -47,7 +47,7 @@ Le site est une base statique propre, sans framework, composee de :
 - animation `reveal` corrigee sur navigation par ancres
 - `IntersectionObserver` regle sur `threshold: 0.05`
 - gestion menu mobile
-- reservation avec envoi Formspree et retour visuel utilisateur
+- accordions mobiles, tabs de carte et chargement progressif des medias
 
 ### SEO / technique
 
@@ -119,7 +119,7 @@ Le site est une base statique propre, sans framework, composee de :
 1. Relire `README.md`, `INSTRUCTIONS.md` et `LIGNE_DIRECTRICE.md`.
 2. Verifier l'etat du depot avant modification.
 3. Lire `index.html` en entier avant un lot important.
-4. Si des edits touchent SEO, navigation, reservation ou structure, rerun un audit.
+4. Si des edits touchent SEO, navigation ou structure, rerun un audit.
 5. En fin de session, mettre a jour les fichiers `.md` si l'etat reel du projet a change.
 
 ## Mini-audit de sortie
@@ -137,7 +137,10 @@ Le site est une base statique propre, sans framework, composee de :
 - Footer et mentions legales renforces pour mieux encadrer le formulaire.
 - Optimisation de rendu ajoutee sur les sections lourdes avec `content-visibility`.
 - Bloc des formules du midi retravaille pour supprimer la fausse affordance de bouton et adopter une lecture de type ardoise.
-- Hero allegée pour clarifier la premiere vue : message raccourci, CTA principal recentre sur la reservation et densite visuelle reduite.
+- Hero allegée pour clarifier la premiere vue : message raccourci, CTA principal recentre sur l'appel et densite visuelle reduite.
+- La fonctionnalite de reservation a ete retiree du site public en attendant une future feature dediee.
+- Les accordions mobiles doivent ouvrir la lecture sans flash perceptible : une seule animation de hauteur, pas de fade parasite du panneau, et pas de fermeture animee des cartes non ciblees.
+- Les cartes mobiles s'ouvrent maintenant de facon independante pour eviter les recompositions brutales du layout et limiter les sauts visuels au clic.
 - Les longues sections sont maintenant repliees sur mobile via des accordéons natifs injectes au chargement, sans modifier le rendu desktop.
 - Le systeme d'accordeons mobile a ete re-travaille pour supprimer les vides de layout, unifier les cartes et remplacer le comportement natif saccade par une animation JS/CSS plus stable.
 - Les contenus internes de `La carte` et des informations pratiques doivent rester lisibles sur mobile en fond clair : pas de texte blanc herite des sections desktop, pas de sous-cartes sombres residuelles.

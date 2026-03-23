@@ -583,7 +583,6 @@ section {
 #carte,
 .kitchen-section,
 #galerie,
-#reservation,
 #contact {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
@@ -1416,136 +1415,6 @@ section {
   line-height: 1.75;
 }
 
-#reservation {
-  background:
-    radial-gradient(circle at top right, rgba(239, 46, 171, 0.08), transparent 30%),
-    linear-gradient(180deg, #fff 0%, var(--blanc-ecume) 100%);
-}
-
-.reservation-layout {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 2rem;
-  align-items: start;
-}
-
-.reservation-copy h3 {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  line-height: 1.1;
-  color: var(--ardoise);
-  margin-bottom: 0.8rem;
-}
-
-.reservation-copy p {
-  color: var(--granit);
-  line-height: 1.8;
-}
-
-.reservation-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1.4rem 0 1.6rem;
-}
-
-.reservation-points span {
-  padding: 0.68rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(29, 87, 183, 0.08);
-  color: var(--bleu-baie);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.reservation-call {
-  width: fit-content;
-}
-
-.reservation-card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 1.5rem;
-  box-shadow: 0 20px 48px rgba(18, 37, 72, 0.1);
-}
-
-.reservation-form {
-  display: grid;
-  gap: 1rem;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.form-field {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.form-field label {
-  color: var(--ardoise);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%;
-  border: 1px solid rgba(18, 37, 72, 0.14);
-  border-radius: 10px;
-  background: #fff;
-  color: var(--granit);
-  padding: 0.9rem 1rem;
-  font: inherit;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-field textarea {
-  resize: vertical;
-  min-height: 130px;
-}
-
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  outline: none;
-  border-color: var(--rose-signature);
-  box-shadow: 0 0 0 4px rgba(239, 46, 171, 0.12);
-}
-
-.form-submit {
-  width: 100%;
-  border: none;
-  cursor: pointer;
-}
-
-.form-submit[disabled] {
-  opacity: 0.75;
-  cursor: wait;
-}
-
-.form-status {
-  min-height: 1.5rem;
-  font-size: 0.94rem;
-  font-weight: 600;
-}
-
-.form-status.is-success {
-  color: #13795b;
-}
-
-.form-status.is-error {
-  color: #b85042;
-}
-
 #galerie {
   background:
     radial-gradient(circle at top left, rgba(29, 87, 183, 0.12), transparent 30%),
@@ -2207,15 +2076,6 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .reservation-layout {
-    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-    gap: 1.5rem;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
   .horaires-grid,
   .contact-grid {
     max-width: 100%;
@@ -2257,7 +2117,6 @@ footer {
   .menu-side-card,
   .signature-cards,
   .kitchen-grid,
-  .reservation-layout,
   .horaires-grid,
   .contact-grid,
   .map-card,
@@ -2316,9 +2175,6 @@ footer {
     width: 100%;
   }
 
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -2343,7 +2199,6 @@ footer {
   #carte,
   .kitchen-section,
   #galerie,
-  #reservation,
   #contact {
     background: transparent;
     color: var(--granit);
@@ -2424,15 +2279,11 @@ footer {
   }
 
   .mobile-accordion-panel {
-    overflow: clip;
+    overflow: hidden;
     height: 0;
-    opacity: 0;
-    transition: height 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 180ms ease;
-    will-change: height, opacity;
-  }
-
-  .mobile-accordion[data-open="true"] .mobile-accordion-panel {
-    opacity: 1;
+    transition: height 280ms cubic-bezier(0.22, 1, 0.36, 1);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .mobile-accordion-panel-inner {
@@ -2448,7 +2299,6 @@ footer {
   #carte .section-inner,
   .kitchen-section .section-inner,
   #galerie .section-inner,
-  #reservation .section-inner,
   #contact .section-inner {
     max-width: 100%;
   }
@@ -2458,7 +2308,6 @@ footer {
   #carte,
   .kitchen-section,
   #galerie,
-  #reservation,
   #contact {
     padding: 0 1.15rem 1rem;
   }

@@ -9,7 +9,7 @@ En moins de 30 secondes, un visiteur doit pouvoir :
 - comprendre l'esprit du lieu
 - voir une carte claire
 - verifier les horaires
-- appeler ou reserver
+- appeler ou trouver l'information utile
 - retrouver l'adresse et l'Instagram officiel
 
 ## Ligne editoriale
@@ -38,7 +38,7 @@ La navigation doit rester aerienne et structuree :
 La page peut contenir d'autres blocs utiles tant qu'ils servent cette lecture, comme :
 
 - galerie
-- reservation
+- informations pratiques
 - mentions legales
 
 ## Principes produit
@@ -64,8 +64,7 @@ Le projet couvre maintenant :
 - presentation du restaurant
 - carte et formules
 - galerie
-- reservation Formspree
-- informations pratiques
+- informations pratiques et acces directs (telephone, Instagram, itineraire)
 - carte Google Maps
 - mentions legales
 - 404 dediee
@@ -78,6 +77,7 @@ Le projet ne couvre pas encore :
 - analytics
 - politique de confidentialite complete
 - systeme de reservation avec disponibilites en temps reel
+- future fonctionnalite de reservation en ligne a reintroduire seulement quand l'experience mobile sera stable et explicite
 
 ## Definition d'une bonne decision
 

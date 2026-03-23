@@ -118,7 +118,7 @@
       <a href="#restaurant">Le restaurant</a>
       <a href="#carte">La carte</a>
       <a href="#contact">Contact</a>
-      <a href="#reservation" class="btn-reserve-nav">Reserver</a>
+      <a href="tel:0298291184" class="btn-reserve-nav">Appeler</a>
     </nav>
 
     <button class="hamburger" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav" id="hamburgerBtn">
@@ -134,7 +134,7 @@
     <a href="#restaurant" data-mobile-close="true">Le restaurant</a>
     <a href="#carte" data-mobile-close="true">La carte</a>
     <a href="#contact" data-mobile-close="true">Contact</a>
-    <a href="#reservation" class="btn-primary mobile-cta" data-mobile-close="true">Reserver</a>
+    <a href="tel:0298291184" class="btn-primary mobile-cta" data-mobile-close="true">Appeler</a>
   </div>
 
   <main id="main-content">
@@ -157,10 +157,10 @@
       <p class="hero-kicker reveal">Saint-Pol-de-Leon &middot; Bord de mer &middot; Cuisine maison</p>
       <h1 class="reveal reveal-delay-1">Cuisine maison. Terrasse lumineuse. Vue ouverte.</h1>
       <p class="hero-sub reveal reveal-delay-2">
-        Une table fraiche et chaleureuse pour dejeuner vite, reserver simplement, ou laisser le temps filer face a l'horizon.
+        Une table fraiche et chaleureuse pour dejeuner vite, consulter la carte, ou laisser le temps filer face a l'horizon.
       </p>
       <div class="hero-buttons reveal reveal-delay-3">
-        <a href="#reservation" class="btn-primary">Reserver une table</a>
+        <a href="tel:0298291184" class="btn-primary">Appeler le restaurant</a>
         <a href="#carte" class="btn-secondary">Voir la carte</a>
       </div>
       <div class="hero-highlights reveal reveal-delay-3">
@@ -651,83 +651,6 @@
     </div>
   </section>
 
-  <section id="reservation">
-    <div class="section-inner">
-      <div class="reveal">
-        <h2 class="section-title">Reservation</h2>
-        <p class="section-subtitle">Envoyez votre demande directement au restaurant. Vous recevrez un retour selon les disponibilites du service.</p>
-        <div class="wave-divider"></div>
-      </div>
-
-      <div class="reservation-layout section-offset-md">
-        <div class="reservation-copy reveal">
-          <p class="section-tag">Reserver une table</p>
-          <h3>Une demande simple, claire et rapide.</h3>
-          <p>
-            Indiquez votre nom, votre telephone, le jour souhaite et le nombre de couverts.
-            Votre demande est transmise directement au restaurant pour retour selon les disponibilites du service.
-          </p>
-          <div class="reservation-points">
-            <span>Midi du mardi au samedi</span>
-            <span>Soir le vendredi et le samedi</span>
-            <span>Confirmation selon disponibilites</span>
-          </div>
-          <a href="tel:0298291184" class="btn-primary reservation-call">Appeler directement</a>
-        </div>
-
-        <div class="reservation-card reveal reveal-delay-1">
-          <form id="reservationForm" class="reservation-form" action="https://formspree.io/f/xovdpwla" method="POST">
-            <input type="hidden" name="_subject" value="Nouvelle demande de reservation - La Petite Folie">
-
-            <div class="form-grid">
-              <div class="form-field">
-                <label for="reservationName">Nom</label>
-                <input id="reservationName" name="name" type="text" autocomplete="name" required>
-              </div>
-              <div class="form-field">
-                <label for="reservationPhone">Telephone</label>
-                <input id="reservationPhone" name="phone" type="tel" autocomplete="tel" required>
-              </div>
-              <div class="form-field">
-                <label for="reservationEmail">Email</label>
-                <input id="reservationEmail" name="email" type="email" autocomplete="email">
-              </div>
-              <div class="form-field">
-                <label for="reservationGuests">Nombre de couverts</label>
-                <select id="reservationGuests" name="guests" required>
-                  <option value="">Choisir</option>
-                  <option value="1">1 couvert</option>
-                  <option value="2">2 couverts</option>
-                  <option value="3">3 couverts</option>
-                  <option value="4">4 couverts</option>
-                  <option value="5">5 couverts</option>
-                  <option value="6">6 couverts</option>
-                  <option value="7+">7 couverts ou plus</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="reservationDate">Date souhaitee</label>
-                <input id="reservationDate" name="date" type="date" required>
-              </div>
-              <div class="form-field">
-                <label for="reservationTime">Heure souhaitee</label>
-                <input id="reservationTime" name="time" type="time" required>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="reservationMessage">Message</label>
-              <textarea id="reservationMessage" name="message" rows="5" placeholder="Precisions, allergies, poussette, retard probable, etc."></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary form-submit">Envoyer la demande</button>
-            <p class="form-status" id="reservationStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="contact">
     <div class="section-inner">
       <div class="reveal">
@@ -906,7 +829,6 @@
         <a href="#restaurant">Le restaurant</a>
         <a href="#carte">La carte</a>
         <a href="#galerie">Galerie</a>
-        <a href="#reservation">Reservation</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="footer-col">

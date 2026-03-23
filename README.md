@@ -10,7 +10,7 @@ Le site couvre aujourd'hui :
 - presentation du restaurant
 - carte de saison
 - galerie photo
-- formulaire de reservation via Formspree
+- informations pratiques et liens directs d'appel / Instagram
 - informations pratiques
 - mentions legales
 - PWA minimale (`manifest.json`, favicons)
@@ -22,7 +22,7 @@ Le site couvre aujourd'hui :
 - `mentions-legales.html` : page legale
 - `404.html` : page d'erreur dediee
 - `assets/css/styles.css` : styles globaux
-- `assets/js/main.js` : interactions, menu mobile, reveals, reservation Formspree
+- `assets/js/main.js` : interactions, menu mobile, reveals, accordions mobiles
 - `assets/images/` : photos locales du restaurant
 - `robots.txt` : directives crawl
 - `sitemap.xml` : URLs publiees
@@ -73,5 +73,5 @@ Les points metier encore a verifier avant mise en production :
 
 - Les vraies photos integrees proviennent du dossier local du projet.
 - Le dossier `assets/images/image ajouter/` demande pendant l'audit initial n'a pas fourni d'images exploitables dans le repo de reference; la base actuelle utilise donc les photos locales deja integrees dans `assets/images/`.
-- Le formulaire de reservation envoie vers `https://formspree.io/f/xovdpwla`.
+- La reservation en ligne n'est pas encore active sur le site public ; l'appel telephone reste le CTA principal.
 - URL publique cible GitHub Pages : `https://lapetitfolie.github.io/restaurant/`

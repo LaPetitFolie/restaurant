@@ -12,6 +12,8 @@ const ACCORDION_PANEL_INNER_SELECTOR = ".mobile-accordion-panel-inner";
 const MAP_FRAME_SELECTOR = ".map-frame";
 const MEDIA_IMAGE_SELECTOR = ".kitchen-visual img, .experience-photo img, .galerie-item img, .contact-doc-card img";
 const MEDIA_SHELL_SELECTOR = ".kitchen-visual, .experience-photo, .galerie-item, .contact-doc-card";
+const AUTO_HEIGHT = "auto";
+const ZERO_HEIGHT = "0px";
 const header = document.getElementById("header");
 const heroBg = document.getElementById("heroBg");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -266,8 +268,6 @@ window.addEventListener("load", () => {
   revealFromHash(window.location.hash);
 });
 
-const reservationForm = document.getElementById("reservationForm");
-const reservationStatus = document.getElementById("reservationStatus");
 const menuTabs = Array.from(document.querySelectorAll(MENU_TAB_SELECTOR));
 const menuPanels = Array.from(document.querySelectorAll(MENU_PANEL_SELECTOR));
 
@@ -333,13 +333,6 @@ const mobileAccordionSections = [
     title: "Galerie",
     subtitle: "Les photos du lieu et du service restent disponibles, sans allonger inutilement la page mobile.",
     panelSelectors: [".galerie-grid"],
-    hasDesktopHeading: true,
-  },
-  {
-    section: "#reservation",
-    title: "Reservation",
-    subtitle: "Une demande simple, claire et rapide, repliable sur smartphone pour garder une page plus courte.",
-    panelSelectors: [".reservation-layout"],
     hasDesktopHeading: true,
   },
   {
@@ -421,15 +414,13 @@ function buildMobileAccordions() {
 
       if (!mobileAccordionMedia.matches) {
         panel.hidden = false;
-        panel.style.height = "auto";
-        panel.style.opacity = "1";
+        panel.style.height = AUTO_HEIGHT;
         return;
       }
 
       if (accordion.dataset.open === ARIA_TRUE) {
         panel.hidden = false;
-        panel.style.height = "auto";
-        panel.style.opacity = "1";
+        panel.style.height = AUTO_HEIGHT;
         return;
       }
 
@@ -499,15 +490,13 @@ function setAccordionState(accordion, isOpen, animate = true) {
 
   if (!mobileAccordionMedia.matches) {
     panel.hidden = false;
-    panel.style.height = "auto";
-    panel.style.opacity = "1";
+    panel.style.height = AUTO_HEIGHT;
     return;
   }
 
   if (!animate) {
     panel.hidden = !isOpen;
-    panel.style.height = isOpen ? "auto" : "0px";
-    panel.style.opacity = isOpen ? "1" : "0";
+    panel.style.height = isOpen ? AUTO_HEIGHT : ZERO_HEIGHT;
     if (isOpen) {
       primeAccordionMedia(accordion);
     }
@@ -517,12 +506,10 @@ function setAccordionState(accordion, isOpen, animate = true) {
   if (isOpen) {
     primeAccordionMedia(accordion);
     panel.hidden = false;
-    panel.style.height = "0px";
-    panel.style.opacity = "0";
+    panel.style.height = ZERO_HEIGHT;
 
     window.requestAnimationFrame(() => {
       panel.style.height = `${panelInner.scrollHeight}px`;
-      panel.style.opacity = "1";
     });
 
     return;
@@ -532,11 +519,9 @@ function setAccordionState(accordion, isOpen, animate = true) {
 
   panel.hidden = false;
   panel.style.height = `${currentHeight}px`;
-  panel.style.opacity = "1";
 
   window.requestAnimationFrame(() => {
-    panel.style.height = "0px";
-    panel.style.opacity = "0";
+    panel.style.height = ZERO_HEIGHT;
   });
 }
 
@@ -582,9 +567,8 @@ function openAccordionForTarget(target) {
     return;
   }
 
-  mobileAccordions.forEach((item) => {
-    setAccordionState(item, item === accordion, false);
-  });
+  accordion.dataset.userTouched = "true";
+  setAccordionState(accordion, true, false);
 }
 
 /**
@@ -597,7 +581,7 @@ function refreshAccordionHeightForNode(node) {
   const panel = node.closest?.(ACCORDION_PANEL_SELECTOR);
   const inner = panel?.querySelector(ACCORDION_PANEL_INNER_SELECTOR);
 
-  if (!panel || !inner || panel.hidden || panel.style.height === "auto") {
+  if (!panel || !inner || panel.hidden || panel.style.height === AUTO_HEIGHT) {
     return;
   }
 
@@ -684,10 +668,12 @@ mobileAccordions.forEach((accordion) => {
 
     accordion.dataset.userTouched = "true";
 
-    mobileAccordions.forEach((item) => {
-      item.dataset.userTouched = "true";
-      setAccordionState(item, shouldOpen && item === accordion);
-    });
+    if (!shouldOpen) {
+      setAccordionState(accordion, false);
+      return;
+    }
+
+    setAccordionState(accordion, true);
   });
 });
 
@@ -762,46 +748,3 @@ menuTabs.forEach((tab, index) => {
     activateMenuTab(nextTab.dataset.menuTab);
   });
 });
-
-if (reservationForm && reservationStatus) {
-  // The reservation form keeps the feedback loop inline to avoid leaving the
-  // page or opening a new tab for a simple availability request.
-  reservationForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const submitButton = reservationForm.querySelector('button[type="submit"]');
-    const formData = new FormData(reservationForm);
-
-    reservationStatus.textContent = "Envoi en cours...";
-    reservationStatus.className = "form-status";
-
-    if (submitButton) {
-      submitButton.disabled = true;
-    }
-
-    try {
-      const response = await fetch(reservationForm.action, {
-        method: reservationForm.method,
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("La demande n'a pas pu etre envoyee.");
-      }
-
-      reservationForm.reset();
-      reservationStatus.textContent = "Demande envoyee. Le restaurant reviendra vers toi rapidement.";
-      reservationStatus.className = "form-status is-success";
-    } catch (error) {
-      reservationStatus.textContent = "Impossible d'envoyer la demande pour le moment. Merci d'appeler le restaurant.";
-      reservationStatus.className = "form-status is-error";
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-      }
-    }
-  });
-}
