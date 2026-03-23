@@ -1922,10 +1922,15 @@ section {
 }
 
 .map-frame {
+  position: relative;
   border-radius: 14px;
   overflow: hidden;
   min-height: 320px;
   background: linear-gradient(135deg, rgba(29, 87, 183, 0.22), rgba(255, 255, 255, 0.08));
+}
+
+.map-activate {
+  display: none;
 }
 
 .map-frame iframe {
@@ -2382,10 +2387,10 @@ footer {
   }
 
   #carte .formula-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 0.45rem 0.75rem;
-    align-items: start;
     padding: 1rem 0 0;
     border-top: 1px solid rgba(18, 37, 72, 0.08);
   }
@@ -2401,24 +2406,30 @@ footer {
   }
 
   #carte .formula-label {
-    grid-column: 1;
-    grid-row: 1;
-    margin: 0.25rem 0 0;
+    order: 1;
+    margin: 0;
   }
 
   #carte .formula-price-badge {
     position: static;
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: end;
-    align-self: start;
+    order: 2;
+    margin-left: auto;
+    align-self: center;
     min-width: 84px;
     padding: 0.42rem 0.8rem;
   }
 
   #carte .formula-card strong,
   #carte .formula-card p {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  #carte .formula-card strong {
+    order: 3;
+  }
+
+  #carte .formula-card p {
+    order: 4;
   }
 
   #carte .menu-item {
@@ -2548,11 +2559,38 @@ footer {
 
   #contact .map-frame {
     min-height: 260px;
-    background: #f3eee7;
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at top right, rgba(252, 231, 243, 0.95), transparent 44%),
+      linear-gradient(180deg, #f7f3ec 0%, #f1ebdf 100%);
   }
 
   #contact .map-frame iframe {
     min-height: 260px;
+  }
+
+  #contact .map-activate {
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.15rem;
+    border-radius: 999px;
+    border: 1px solid rgba(180, 35, 107, 0.14);
+    background: #fff;
+    color: var(--mobile-rose);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 24px rgba(18, 37, 72, 0.08);
+  }
+
+  #contact .map-frame.media-pending .map-activate,
+  #contact .map-frame.media-loaded .map-activate {
+    display: none;
   }
 
   #contact .contact-icon,

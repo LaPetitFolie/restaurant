@@ -259,12 +259,13 @@ const mobileAccordionSections = [
     section: "#contact",
     title: "Informations pratiques",
     subtitle: "Adresse, telephone, horaires et acces rapide sans obliger a tout faire defiler sur mobile.",
-    panelSelectors: [".horaires-grid", ".map-card"],
+    panelSelectors: [".horaires-grid", ".contact-grid", ".map-card"],
     hasDesktopHeading: true,
   },
 ];
 const mobileAccordions = [];
 const mobileAccordionMedia = window.matchMedia("(max-width: 768px)");
+const mediaPreloadCache = new Set();
 
 function buildMobileAccordions() {
   mobileAccordionSections.forEach((config) => {
@@ -353,6 +354,31 @@ function buildMobileAccordions() {
   });
 }
 
+function primeAccordionMedia(accordion) {
+  const panelInner = accordion?._panelInner;
+
+  if (!panelInner) {
+    return;
+  }
+
+  Array.from(panelInner.querySelectorAll("img"))
+    .slice(0, 2)
+    .forEach((image, index) => {
+      image.loading = "eager";
+      image.fetchPriority = index === 0 ? "high" : "auto";
+
+      const source = image.currentSrc || image.getAttribute("src");
+
+      if (!source || mediaPreloadCache.has(source)) {
+        return;
+      }
+
+      const preloader = new Image();
+      preloader.src = source;
+      mediaPreloadCache.add(source);
+    });
+}
+
 function setAccordionState(accordion, isOpen, animate = true) {
   const panel = accordion._panel;
   const panelInner = accordion._panelInner;
@@ -376,10 +402,14 @@ function setAccordionState(accordion, isOpen, animate = true) {
     panel.hidden = !isOpen;
     panel.style.height = isOpen ? "auto" : "0px";
     panel.style.opacity = isOpen ? "1" : "0";
+    if (isOpen) {
+      primeAccordionMedia(accordion);
+    }
     return;
   }
 
   if (isOpen) {
+    primeAccordionMedia(accordion);
     panel.hidden = false;
     panel.style.height = "0px";
     panel.style.opacity = "0";
@@ -481,24 +511,40 @@ function enhanceDeferredMedia() {
 
   document.querySelectorAll(".map-frame").forEach((frame) => {
     const iframe = frame.querySelector("iframe");
+    const button = frame.querySelector(".map-activate");
 
     if (!iframe) {
       return;
     }
 
-    frame.classList.add("media-pending");
-    frame.setAttribute("aria-busy", "true");
+    const loadMap = () => {
+      const source = iframe.dataset.mapSrc;
 
-    iframe.addEventListener(
-      "load",
-      () => {
-        frame.classList.remove("media-pending");
-        frame.classList.add("media-loaded");
-        frame.setAttribute("aria-busy", "false");
-        refreshAccordionHeightForNode(frame);
-      },
-      { once: true }
-    );
+      if (!source || frame.dataset.mapLoaded === "true") {
+        return;
+      }
+
+      frame.dataset.mapLoaded = "true";
+      frame.classList.add("media-pending");
+      frame.setAttribute("aria-busy", "true");
+      iframe.setAttribute("src", source);
+      button?.setAttribute("hidden", "true");
+      refreshAccordionHeightForNode(frame);
+    };
+
+    iframe.addEventListener("load", () => {
+      frame.classList.remove("media-pending");
+      frame.classList.add("media-loaded");
+      frame.setAttribute("aria-busy", "false");
+      refreshAccordionHeightForNode(frame);
+    });
+
+    if (mobileAccordionMedia.matches) {
+      button?.addEventListener("click", loadMap, { once: true });
+      return;
+    }
+
+    loadMap();
   });
 }
 
@@ -521,6 +567,26 @@ mobileAccordions.forEach((accordion) => {
 
 mobileAccordionMedia.addEventListener("change", () => {
   syncMobileAccordions();
+
+  if (!mobileAccordionMedia.matches) {
+    document.querySelectorAll(".map-frame").forEach((frame) => {
+      if (frame.dataset.mapLoaded === "true") {
+        return;
+      }
+
+      const iframe = frame.querySelector("iframe");
+      const source = iframe?.dataset.mapSrc;
+
+      if (!iframe || !source) {
+        return;
+      }
+
+      frame.dataset.mapLoaded = "true";
+      iframe.setAttribute("src", source);
+      frame.classList.add("media-pending");
+      frame.setAttribute("aria-busy", "true");
+    });
+  }
 });
 
 function activateMenuTab(targetKey) {
